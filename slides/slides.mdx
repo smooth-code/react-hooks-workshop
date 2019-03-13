@@ -1,0 +1,862 @@
+export { default as themes } from './themes'
+
+<img
+  src="https://res.cloudinary.com/smooth/image/upload/v1552399812/logos/smooth-academy.svg"
+  alt="Smooth Academy"
+  width="30%"
+/>
+
+# React Advanced Workshop
+
+---
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
+
+<img
+  src="https://res.cloudinary.com/smooth/image/upload/v1551174170/avatars/greg-berge.jpg"
+  alt="Smooth Academy"
+  width="20%"
+  style={{ borderRadius: '50%' }}
+/>
+
+### Greg Bergé
+
+Développeur full-stack JavaScript.<br />
+Co-fondateur de Smooth Code
+
+<FontAwesomeIcon icon={faGithub} /> <FontAwesomeIcon icon={faTwitter} /> @neoziro
+
+---
+
+# Sommaire
+
+---
+
+# Introduction
+
+---
+
+# State of React
+
+---
+
+## Historique
+
+- 2010 - Jordan Walke crée React (Reason)
+- 2011 - React est utilisé sur le feed Facebook
+- 2012 - React est utilisé sur Instagram
+- 2015 - Facebook open source React Native
+- 2017 - Facebook annonce React Fiber
+- 2018 - Suspense + React Hooks
+
+---
+
+## Downloads
+
+<iframe
+  style={{ width: '80vw', height: '70vh', overflow: 'hidden' }}
+  frameborder="0"
+  src="https://npmcharts.com/compare/react,@angular/core,vue?minimal=true&interval=7"
+/>
+
+---
+
+## Evolution
+
+- React est incontournable
+- Vue est en croissance
+- Angular est sur le déclin
+
+---
+
+## Fiber ?
+
+- Réécriture du coeur de React (v16)
+- Permet la création de nouvelles features
+- Hooks, Suspense, Concurrent Mode...
+
+---
+
+## Hooks ?
+
+- Nouvelle API de création de composants
+- Sortie le 6 février 2019 (v16.8)
+
+> Simplification du développement
+
+---
+
+## Concurrent Mode ?
+
+- Rendu non bloquant
+- Permet d'optimiser les performances
+- Mode strict requis
+- Sortie Q2 2019
+
+> Application plus fluide et performante
+
+---
+
+## Suspense ?
+
+- Solution pour gérer le data-fetching
+- Sortie mid 2019
+
+> Solution officielle pour gérer le data-fetching
+
+---
+
+# Démarrer avec React
+
+---
+
+## Create React App
+
+- Moyen le plus rapide pour démarrer
+- Maintenu par la team React
+- SVGR inside ✨😎
+
+---
+
+## Philosophie
+
+- Zero-config
+- Focus sur React
+- Scalable (éjection possible)
+
+---
+
+## Under the hood
+
+- 📦 Bundler (webpack)
+- 🌎 Dev server (webpack)
+- 🤯 Transpiler (Babel)
+- 👮‍♂️ Linter (ESLint)
+- ✨ CSS Autoprefixer
+- 🃏 Test runner (Jest)
+- 🦁 Gestion des SVG (SVGR)
+
+---
+
+# Exercice 1 - create-react-app
+
+---
+
+# React Hooks
+
+---
+
+## Introduction
+
+<iframe
+  style={{ width: '80vw', height: '50vh', overflow: 'hidden' }}
+  src="https://www.youtube.com/embed/dpw9EHDh2bM"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+/>
+
+Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
+
+---
+
+## No breaking change !
+
+- Les classes restent supportés
+- Tout est 100% rétrocompatible
+- Pas imposé, mais recommandé 😏
+
+---
+
+## Motivation
+
+- Partage de logique entre composants
+- Alternatives aux HOCs et aux render props
+- API plus simple à apréhender
+
+---
+
+## Conseils
+
+- Migrer son code progressivement
+- Ne pas se forcer à les utiliser
+
+---
+
+# Qu'est-ce qu’un Hook ?
+
+---
+
+> Un Hook React est une fonction qui commence par "use" et qui peut être utilisée à l'intérieur d'un composant fonctionnel React.
+
+---
+
+# Hooks natifs
+
+---
+
+## Basics
+
+- `useState`
+- `useEffect`
+- `useContext`
+
+---
+
+## Avancés
+
+- `useReducer`
+- `useCallBack`
+- `useMemo`
+- `useRef`
+- `useImperativeHandle`
+- `useLayoutEffect`
+- `useDebugValue`
+
+---
+
+# `useState`
+
+---
+
+## Example
+
+```js
+import React, { useState } from 'react'
+
+function Example() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+---
+
+## Equivalent
+
+```js
+class Example extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+---
+
+## Seulement dans les fonctions !
+
+```js
+const Example = props => {
+  // You can use Hooks here!
+  return <div />
+}
+```
+
+- Seulement au niveau le plus haut
+- Pas de conditions
+
+---
+
+## Fonctions ou constantes ?
+
+```js
+const Example = props => {
+  // You can use Hooks here!
+  return <div />
+}
+```
+
+```js
+function Example(props) {
+  // You can use Hooks here!
+  return <div />
+}
+```
+
+> Préférez les fonctions
+
+---
+
+## Le state n’est pas mergé
+
+```js
+const [coords, setCoords] = useState({ x: 10, y: 20 })
+setCoords({ x: 15 }) // the new coords will be { x: 15 } and not { x: 10, y: 15 }
+```
+
+---
+
+## Déclarer plusieurs états
+
+```js
+function ExampleWithManyStates() {
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42)
+  const [fruit, setFruit] = useState('banana')
+  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }])
+  // ...
+}
+```
+
+> Ne pas hésiter à décomposer les states
+
+---
+
+## État par défaut
+
+```js
+const [value, setValue] = useState(0) // 0 est la valeur par défaut
+```
+
+---
+
+## Comment ça marche ?
+
+```js
+function Example() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+- `count` est à 0 au montage
+- Au clic sur le bouton, le state est mis à jour
+- Le composant est re-rendu, `count` est à 1
+
+---
+
+## Update
+
+```js
+const [count, setCount] = useState(0)
+// On peut passer une valeur directement
+setCount(10)
+// Si on utilise le state précédent, on passe une fonction
+setCount(previousCount => previousCount + 1)
+```
+
+> Toujours utiliser une fonction si on part du state précédent
+
+---
+
+# Controlled VS Uncontrolled
+
+---
+
+## Uncontrolled components
+
+```js
+function Example() {
+  // Input non contrôlé, il gère son state seul
+  return <input defaultValue="initial value" />
+}
+```
+
+---
+
+## Controlled components
+
+```js
+function Example() {
+  const [value, setValue] = useState('')
+  // Input contrôlé, le state est hors du composant "input"
+  return (
+    <input value={value} onChange={event => setValue(event.target.value)} />
+  )
+}
+```
+
+---
+
+## Controlled to Uncontrolled
+
+```js
+function ControlledInput({ defaultValue, ...props }) {
+  const [value, setValue] = useState(defaultValue)
+  return (
+    <input
+      value={value}
+      onChange={event => setValue(event.target.value)}
+      {...props}
+    />
+  )
+}
+```
+
+> Il est possible de créer un composant non-contrôlé à partir d'un composant contrôlé.
+
+---
+
+> Toujours privilégier les composants contrôlés.
+
+---
+
+# Exercice 2 - Create Search Field
+
+---
+
+# `useEffect`
+
+---
+
+# Qu'est-ce qu'un effect ?
+
+---
+
+## Une fonction
+
+## Un effet de bord
+
+## Déclenché au rendu du composant
+
+---
+
+## Exemple
+
+```js
+import React, { useState, useEffect } from 'react'
+function Example() {
+  const [count, setCount] = useState(0)
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = 'You clicked ' + count + ' times'
+  })
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
+```
+
+---
+
+## Équivalent
+
+```js
+class Example extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+
+  componentDidMount() {
+    document.title = 'You clicked ' + this.state.count + ' times'
+  }
+
+  componentDidUpdate() {
+    document.title = 'You clicked ' + this.state.count + ' times'
+  }
+
+  render() {
+    return (
+      <div>
+        <p>You clicked {this.state.count} times</p>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Click me
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+---
+
+## Penser en effet
+
+- Quel est l’effet de bord ?
+- Comment dois-je le nettoyer ?
+- Qu’est-ce qui impact cet effet ?
+
+---
+
+## Nettoyage
+
+```js
+function ClickSpy() {
+  useEffect(() => {
+    function handleClick() {
+      alert('clicked')
+    }
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  })
+
+  return null
+}
+```
+
+---
+
+## Lifecycle
+
+- Mount
+  - Run effect
+- Update
+  - Clean effect
+  - Run effect
+- Unmount
+  - Clean effect
+
+---
+
+## Separation of concern
+
+```js
+useEffect(() => {
+  document.title = 'My title'
+})
+useEffect(() => {
+  pingMyApi()
+})
+```
+
+> Un effet ➡ une responsabilité
+
+---
+
+## Effect Dependencies
+
+```js
+function PageTitle({ title }) {
+  useEffect(() => {
+    document.title = title
+  }, [title]) // this effect will run only if "title" changes
+  return null
+}
+```
+
+> Les dépendances permettent d'éviter de lancer l'effet inutilement
+
+---
+
+## Et seulement au montage ?
+
+```js
+function MountSpy() {
+  useEffect(() => {
+    console.log('Mount')
+  }, [])
+  return null
+}
+```
+
+> Pas de dépendances, seulement au montage donc !
+
+---
+
+## Lifecycle
+
+- Mount
+  - Run effect
+- ~~Update~~
+  - ~~Clean effect~~
+  - ~~Run effect~~
+- Unmount
+  - Clean effect
+
+---
+
+# Exercice 3 - Fetch Data
+
+---
+
+# Error Boundaries
+
+---
+
+## Utilisation
+
+```js
+<ErrorBoundary>
+  <MyWidget />
+</ErrorBoundary>
+```
+
+> Comparable à un try / catch
+
+---
+
+## Exemple
+
+```js
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, info) {
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, info)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>
+    }
+
+    return this.props.children
+  }
+}
+```
+
+---
+
+## Conseils
+
+> Mettre des boundaries aux endroits stratégique
+
+> Pourquoi pas pour le data-fetching ?
+
+---
+
+# Exercice 4 - Handle errors
+
+---
+
+# Gestion du state avancée
+
+---
+
+## La gestion du state, c’est dur
+
+```js
+function Example() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <button onClick={() => setCount(count => count + 1)}>Increment</button>
+      <button onClick={() => setCount(count => count - 1)}>Decrement</button>
+    </div>
+  )
+}
+```
+
+---
+
+# Comment organiser ça ?
+
+---
+
+## `useReducer`
+
+```js
+function reducer(count, action) {
+  switch (action.type) {
+    case 'increment':
+      return count + 1
+    case 'decrement':
+      return count - 1
+    default:
+      throw new Error('Unsupported action')
+  }
+}
+
+function Example() {
+  const [count, dispatch] = useReducer(reducer)
+
+  return (
+    <div>
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>
+    </div>
+  )
+}
+```
+
+---
+
+## Avantages
+
+> Gestion du state centralisée
+
+> Le reducer est testable
+
+> Le code des composants est plus clair
+
+---
+
+# Exercice 5 - Loading
+
+---
+
+# Créer des composants scalable
+
+---
+
+# Exercice 6 - Card component
+
+---
+
+# Exercice 7 - Internationalisation
+
+---
+
+# Exercice 8 - Raccourcis clavier
+
+---
+
+# Exercice 9 - Debounce
+
+---
+
+## `useEffect` doesn't work
+
+```js
+function Example() {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => console.log(count), 100)
+    return () => clearInterval(interval)
+  }, [])
+  return <button onClick={() => setCount(count => count + 1)}>Increment</button>
+}
+```
+
+> useEffect capture les variables au montage
+
+---
+
+## C'était pareil avant
+
+```js
+function Example() {
+  const [count, setCount] = useState(0)
+
+  function handleAlertClick() {
+    setTimeout(() => alert('You clicked on: ' + count), 3000)
+  }
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={handleAlertClick}>Show alert</button>
+    </div>
+  )
+}
+```
+
+[CodeSandbox](https://codesandbox.io/s/w2wxl3yo0l)
+
+---
+
+# Comment faire ?
+
+---
+
+# 1. Spécifier les dépendances
+
+---
+
+## Avec dépendances
+
+```js
+function Example() {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const interval = setInterval(() => console.log(count), 100)
+    return () => clearInterval(interval)
+  }, [count])
+  return <button onClick={() => setCount(count => count + 1)}>Increment</button>
+}
+```
+
+---
+
+# 2. `useRef` à la rescousse !
+
+---
+
+## Avec `useRef`
+
+```js
+function Example() {
+  const [count, setCount] = useState(0)
+  const countRef = useRef()
+  countRef.current = count
+  useEffect(() => {
+    const interval = setInterval(() => console.log(countRef.current), 100)
+    return () => clearInterval(interval)
+  }, [count])
+  return <button onClick={() => setCount(count => count + 1)}>Increment</button>
+}
+```
+
+---
+
+## Qu'est-ce que le `useRef` ?
+
+- Un objet unique à votre instance de composant
+- Un moyen de stocker des valeurs sans déclencher un update
+
+---
+
+## Utilisation
+
+```js
+const ref = useRef(/* initial value */)
+ref.current // Access ref value using `ref.current`
+```
+
+---
+
+# Et la propriété `ref` ?
+
+---
+
+## Même principe !
+
+```js
+function Example() {
+  const divRef = useRef()
+  // After mount, `divRef.current` will contain the DOM Element
+  return <div ref={divRef} />
+}
+```
+
+---
