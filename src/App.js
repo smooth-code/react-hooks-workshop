@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Normalize, Grid, Typography } from '@smooth-ui/core-sc'
+import SearchInput from './components/SearchInput'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+export default function App() {
+  const [query, setQuery] = useState('')
+  return (
+    <>
+      {/* Le composant "Grid" centre dans la page, "py" signifie "padding-top" et "padding-bottom" */}
+      <Grid>
+        {/* Injection de normalize.css pour avoir un rendu consistant sur tous les navigateurs */}
+        <Normalize />
+        {/* "Typography" est un composant avec des variantes de titres prêtes à l'emploi */}
+        <Typography variant="display-1">Smooth Movie</Typography>
+        {/* Votre composant "SearchInput" */}
+        <SearchInput
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+        />
+        <p>Search: {query}</p>
+      </Grid>
+    </>
+  )
 }
-
-export default App;
