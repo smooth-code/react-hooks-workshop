@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@smooth-ui/core-sc'
 import SearchInput from './components/SearchInput'
+import { useShortcutEffect } from './components/Shortcut'
 import { useI18n, T } from './components/I18n'
 import Catch from './components/Catch'
 import Card from './components/Card'
@@ -21,6 +22,11 @@ export default function App() {
   const { setLocale, locale } = useI18n()
   // Si on est en français, on voudra passer en anglais et inversement
   const otherLocale = locale === 'fr' ? 'en' : 'fr'
+
+  // Réaction au raccourcis "alt+f"
+  useShortcutEffect('alt+f', () => {
+    searchInputRef.current.focus()
+  })
 
   // Autofocus
   useEffect(() => {
