@@ -29,3 +29,8 @@ export function useMovieSearch(query) {
 
   return state.movies
 }
+
+export function MovieSearch({ query, children }) {
+  const movies = useMovieSearch(query)
+  return children(movies)
+}
