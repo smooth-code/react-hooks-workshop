@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export function useMovieSearch(query) {
-  // State contenant les films
-  const [movies, setMovies] = useState(null)
+  // State contenant l'erreur et les films
+  const [state, setState] = useState({ movies: null, error: null })
 
   // Appel de l’API lorsque la query est modifiée
   useEffect(() => {
@@ -15,9 +15,17 @@ export function useMovieSearch(query) {
         },
       })
       .then(res => {
-        setMovies(res.data.results)
+        setState({ movies: res.data.results, error: null })
+      })
+      .catch(error => {
+        setState({ error, movies: null })
       })
   }, [query])
 
-  return movies
+  // Si une erreur a été retournée par l'API, alors je throw
+  if (state.error) {
+    throw state.error
+  }
+
+  return state.movies
 }
