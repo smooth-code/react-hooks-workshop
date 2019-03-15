@@ -1,12 +1,31 @@
-import { useState, useEffect } from 'react'
+import { useReducer, useEffect } from 'react'
 import axios from 'axios'
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'empty':
+      return { error: null, movies: [] }
+    case 'success':
+      return { error: null, movies: action.res.data.results }
+    case 'error':
+      return { error: action.error, movies: null }
+    default:
+      throw new Error(`Invalid action type ${action.type}`)
+  }
+}
+
+const initialState = { movies: null, error: null }
 
 export function useMovieSearch(query) {
   // State contenant l'erreur et les films
-  const [state, setState] = useState({ movies: null, error: null })
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   // Appel de l’API lorsque la query est modifiée
   useEffect(() => {
+    if (!query) {
+      dispatch({ type: 'empty' })
+      return
+    }
     axios
       .get('https://api.themoviedb.org/3/search/movie', {
         params: {
@@ -15,10 +34,10 @@ export function useMovieSearch(query) {
         },
       })
       .then(res => {
-        setState({ movies: res.data.results, error: null })
+        dispatch({ type: 'success', res })
       })
       .catch(error => {
-        setState({ error, movies: null })
+        dispatch({ type: 'error', error })
       })
   }, [query])
 
