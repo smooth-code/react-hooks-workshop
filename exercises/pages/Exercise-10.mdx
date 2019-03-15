@@ -1,0 +1,52 @@
+---
+name: Ex. 10 - Autofocus
+order: 10
+---
+
+# Ex. 10 - Autofocus
+
+## Instructions
+
+Nous allons faire en sorte que le champs de recherche soit "focus" automatiquement. Nous pourrions utiliser l'[attribut autofocus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/autofocus), mais ce serait trop facile et non contrôlé 😬.
+
+- Modifier `SearchInput` afin de supporter une `ref` et la fonction `ref.current.focus()`
+- A l'aide de `useRef` et `useEffect`, faire en sorte que le champs soit focus automatiquement dans `App`
+
+### Résultat attendu
+
+Le champs est focus automatiquement au démarrage de l'application.
+
+<img src="/public/ex-10.png" width="100%" alt="Résultat" />
+
+## Aide
+
+### Forward ref
+
+```js
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+
+export default forwardRef(function MyInput(props, ref) {
+  const inputRef = useRef()
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus()
+    },
+  }))
+
+  return <input ref={inputRef} {...props} />
+})
+```
+
+### Utilisation d'une ref
+
+```js
+function Example() {
+  const inputRef = useRef()
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [inputRef])
+
+  return <input ref={inputRef} />
+```

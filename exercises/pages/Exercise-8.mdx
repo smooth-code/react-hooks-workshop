@@ -1,0 +1,51 @@
+---
+name: Ex. 8 - Composants Scalables
+order: 8
+---
+
+# Ex. 8 - Composants Scalables
+
+## Instructions
+
+Nous souhaitons afficher les films sous forme d'une Card un peu plus élaborée.
+
+- Créer un composant `Card` qui exposera :
+  - `Card`
+  - `Card.Body`
+  - `Card.Title`
+  - `Card.Subtitle`
+
+### Résultat attendu
+
+Lorsque le champs de recherche est vide, j'obtiens une liste vide.
+
+<img src="/public/ex-8.png" width="100%" alt="Résultat" />
+
+## Aide
+
+### Exemple de composition d'une Card
+
+```js
+function MovieCard({ movie }) {
+  return (
+    <Col my={1} xs={12} md={6}>
+      <Card
+        key={movie.id}
+        style={{
+          height: 200,
+          backgroundImage: movie.backdrop_path
+            ? `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
+            : null,
+        }}
+      >
+        <Card.Body>
+          <Card.Title>{movie.title}</Card.Title>
+          <Card.Subtitle>
+            {movie.vote_average} ({movie.vote_count} votes)
+          </Card.Subtitle>
+        </Card.Body>
+      </Card>
+    </Col>
+  )
+}
+```

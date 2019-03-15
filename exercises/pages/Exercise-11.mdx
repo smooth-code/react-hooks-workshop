@@ -1,0 +1,76 @@
+---
+name: Ex. 11 - Raccourcis clavier
+order: 11
+---
+
+# Ex. 11 - Raccourcis clavier
+
+## Instructions
+
+Nous souhaitons maintenant créer un Hook permettant de réagir à un raccourcis clavier. Grâce à ce hook nous pourrons faire un focus sur le champs de recherche quand l'utilisateur appuie sur les touches "ALT" et "F" simultanément.
+
+Pour réaliser un Hook aussi complexe, nous avons besoin de plusieurs choses :
+
+- Réagir aux évènements "keydown" et "keyup" de `window`
+- Garder une trace des touches actives
+- Déclencher une fonction lorsque les touches actives sont celles spécifiées dans le raccourcis
+
+Nous allons donc décomposer le travail :
+
+### Un Hook `useEventListener`
+
+```js
+function Example() {
+  useEventListener(window, 'keydown', e => {
+    console.log('A key is down:', e.keyCode)
+  })
+}
+```
+
+### Un Hook `useActiveKeys`
+
+```js
+function Example() {
+  const activeKeys = useActiveKeys()
+  // Affiche les clefs enfoncés par l'utilisateur
+  console.log(activeKeys)
+}
+```
+
+### Une fonction `getShortcutKeys`
+
+```js
+const shortcutKeys = getShortcutKeys('alt+f')
+// [18, 70]
+```
+
+### Le Hook `useShortcutEffect`
+
+```js
+function Example() {
+  useShortcutEffect('alt+f', () => {
+    // La réaction au raccourcis "ALT" + "F"
+  })
+}
+```
+
+### Résultat attendu
+
+Lorsque je presse les touches "ALT" et "F" simultanément, le champs de recherche est focus.
+
+<img src="/public/ex-10.png" width="100%" alt="Résultat" />
+
+## Aide
+
+### Utilisation d'une fonction dans un `useEffect`
+
+```js
+function useMountEffect(effect) {
+  const effectRef = useRef()
+  effectRef.current = effect
+
+  useEffect(() => {
+    effectRef.current()
+  }, [effectRef])
+}
+```

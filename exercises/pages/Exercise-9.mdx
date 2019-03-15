@@ -1,0 +1,108 @@
+---
+name: Ex. 9 - I18N
+order: 9
+---
+
+# Ex. 9 - I18N
+
+## Instructions
+
+Nous souhaitons maintenant traduire notre application et donner la possibilité à l'utilisateur de changer la langue en live.
+
+- Créer un dossier `src/locales` avec deux fichiers `en.json` et `fr.json` (voir aide)
+- Créer un fichier `src/components/I18n.js` qui exposera :
+  - `I18nProvider`
+  - `useI18n`
+  - `useT`
+  - `T`
+- Ajouter `I18nProvider` dans `index.js`
+- Modifier `SearchInput` afin de récupérer le placeholder via `useT`
+- Modifier `App` et ajouter un bouton pour changer la langue et traduire le titre de l'application
+
+### Résultat attendu
+
+Un bouton s'affiche me permettant de changer la langue de l'application.
+
+<img src="/public/ex-9.png" width="100%" alt="Résultat" />
+
+## Aide
+
+### I18n
+
+```js
+// I18n.js
+import React, { createContext, useState, useContext, useMemo } from 'react'
+
+const I18nContext = createContext()
+
+export function I18nProvider({ translations, defaultLocale, children }) {
+  // TODO: à l'aide de "useState", créer la valeur injectée dans le contexte.
+  // Elle contiendra : `translations`, `locale` et `setLocale`.
+  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
+}
+
+export function useT(id) {
+  // TODO: à l'aide de "useContext", récupérer la traduction correspondante à "id"
+}
+
+export function T({ id }) {
+  return useT(id)
+}
+
+export function useI18n() {
+  return useContext(I18nContext)
+}
+```
+
+### Branchement du I18nProvider
+
+```js
+// index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import Catch from './components/Catch'
+import { I18nProvider } from './components/I18n'
+import * as serviceWorker from './serviceWorker'
+import en from './locales/en.json'
+import fr from './locales/fr.json'
+
+ReactDOM.render(
+  <Catch>
+    <I18nProvider translations={{ en, fr }} defaultLocale="en">
+      <App />
+    </I18nProvider>
+  </Catch>,
+  document.getElementById('root'),
+)
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister()
+```
+
+### Locales
+
+**en.json**
+
+```json
+{
+  "fr": "🇫🇷 French",
+  "en": "🇬🇧 English",
+  "title": "Smooth Movies",
+  "placeholder": "Type something..."
+}
+```
+
+**fr.json**
+
+```json
+{
+  "fr": "🇫🇷 Français",
+  "en": "🇬🇧 Anglais",
+  "title": "Smooth Films",
+  "placeholder": "Tapez quelque chose..."
+}
+```
