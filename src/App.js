@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
   Button,
   Row,
@@ -15,10 +15,17 @@ import { MovieSearch } from './containers/MovieDb'
 
 export default function App() {
   const [query, setQuery] = useState('Lord of the Rings')
+  // Référence sur le champs de recherche
+  const searchInputRef = useRef()
   // Récupération de la locale et de la fonction "setLocale" depuis le contexte
   const { setLocale, locale } = useI18n()
   // Si on est en français, on voudra passer en anglais et inversement
   const otherLocale = locale === 'fr' ? 'en' : 'fr'
+
+  // Autofocus
+  useEffect(() => {
+    searchInputRef.current.focus()
+  }, [searchInputRef])
 
   return (
     <>
@@ -36,6 +43,7 @@ export default function App() {
         </Typography>
         {/* Votre composant "SearchInput" */}
         <SearchInput
+          ref={searchInputRef}
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
