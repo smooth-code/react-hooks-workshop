@@ -1,0 +1,74 @@
+---
+name: Ex. 3 - Data Fetching
+order: 3
+---
+
+# Ex. 3 - Data Fetching
+
+## Instructions
+
+Nous allons désormais récupérer les données depuis l'[API de TheMovieDB](https://developers.themoviedb.org/3). Une clef d'API a déjà été créée, nous pourrons donc nous concentre sur la partie applicative.
+
+Pour fetcher les données, nous utiliserons la librairie [axios](https://github.com/axios/axios), cela permet de faire des requêtes HTTP de façon simple et d'assurer une compatibilité sur tous les navigateurs.
+
+- Installer `axios`
+- A l'aide de `useEffect`, `useState` et `axios` récupérer les données depuis l'API
+
+**Utilisation de l'API**
+
+```js
+axios
+  .get('https://api.themoviedb.org/3/search/movie', {
+    params: {
+      api_key: 'c5742978852b8f695a61e22a33a8196c',
+      query: 'Lord of the Rings',
+    },
+  })
+  .then(res => {
+    console.log(res.data)
+  })
+```
+
+### Résultat attendu
+
+Lorsque l'utilisateur tape dans le champs de recherche, la liste de films correspondants s'affiche.
+
+<img src="/public/ex-3.png" width="100%" alt="Résultat" />
+
+## Aide
+
+```js
+// App.js
+import React, { useState, useEffect } from 'react'
+import { Normalize, Grid, Typography } from '@smooth-ui/core-sc'
+import axios from 'axios'
+import SearchInput from './components/SearchInput'
+
+export default function App() {
+  const [query, setQuery] = useState('Lord of the Rings')
+  /* TODO: créer un state pour les films */
+
+  useEffect(
+    () => {
+      /* TODO: faire la requête */
+    },
+    [
+      /* TODO: spécifier les dépendances nécessaires */
+    ],
+  )
+
+  return (
+    <>
+      <Grid py={200}>
+        <Normalize />
+        <Typography variant="display-1">Smooth Movie</Typography>
+        <SearchInput
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+        />
+        {/* TODO: afficher la liste des films */}
+      </Grid>
+    </>
+  )
+}
+```

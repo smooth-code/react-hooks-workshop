@@ -1,0 +1,56 @@
+---
+name: Ex. 4 - Custom Hooks
+order: 4
+---
+
+# Ex. 4 - Custom Hooks
+
+## Instructions
+
+Nous allons maintenant créer un Hook spécifique qui aura pour responsabilité de faire une recherche sur l'API.
+
+- Créer un Hook custom `useMovieSearch` dans `src/containers/MovieDb.js`
+
+Le Hook custom devra permettre de récupérer une liste de films depuis l'API.
+
+### Résultat attendu
+
+L'application fonctionne comme auparavant.
+
+<img src="/public/ex-3.png" width="100%" alt="Résultat" />
+
+## Aide
+
+```js
+// App.js
+import React, { useState } from 'react'
+import { Normalize, Grid, Typography } from '@smooth-ui/core-sc'
+import SearchInput from './components/SearchInput'
+import { useMovieSearch } from './containers/MovieDb'
+
+export default function App() {
+  const [query, setQuery] = useState('Lord of the Rings')
+
+  // Utilisation du Hook custom permettant de récupérer la liste de films depuis l’API
+  const movies = useMovieSearch(query)
+
+  return (
+    <>
+      {/* Le composant "Grid" centre dans la page, "py" signifie "padding-top" et "padding-bottom" */}
+      <Grid py={200}>
+        {/* Injection de normalize.css pour avoir un rendu consistant sur tous les navigateurs */}
+        <Normalize />
+        {/* "Typography" est un composant avec des variantes de titres prêtes à l'emploi */}
+        <Typography variant="display-1">Smooth Movie</Typography>
+        {/* Votre composant "SearchInput" */}
+        <SearchInput
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+        />
+        {/* Affichage de la liste de films */}
+        {movies && movies.map(movie => <p key={movie.id}>{movie.title}</p>)}
+      </Grid>
+    </>
+  )
+}
+```

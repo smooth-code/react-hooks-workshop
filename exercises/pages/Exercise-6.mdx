@@ -1,0 +1,38 @@
+---
+name: Ex. 6 - Render props
+order: 6
+---
+
+# Ex. 6 - Render props
+
+## Instructions
+
+L'application gère les erreurs, mais pas de manière fine. Le comportement souhaité serait que l'erreur soit affichée à la place de la liste de film, de cette manière l'utilisateur pourrait continuer à taper dans le champs de recherche.
+
+- Créer un composant "render props" dans `MovieSearch` dans `src/containers/MovieDb.js`
+- Intégrer ce composant dans `App` et ajouter un `Catch` autour
+
+### Résultat attendu
+
+Lorsque le champs de recherche est vide, j'obtiens une erreur à la place de la liste de films.
+
+<img src="/public/ex-6.png" width="100%" alt="Résultat" />
+
+## Aide
+
+### Render props component
+
+```js
+export function Counter({ initialValue, children }) {
+  const count = useCounter(initialValue)
+  return children(count)
+}
+```
+
+### Utilisation d'un render props component
+
+```js
+function Example() {
+  return <Counter>{count => <div>{count}</div>}</Counter>
+}
+```

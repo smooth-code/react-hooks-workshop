@@ -1,4 +1,4 @@
-import base, { syntaxHighlighterPrism } from '@mdx-deck/themes'
+import base, { dark, syntaxHighlighterPrism } from '@mdx-deck/themes'
 import { css } from '@emotion/core'
 import tomorrow from 'react-syntax-highlighter/dist/styles/prism/tomorrow'
 

@@ -15,4 +15,5 @@ export default {
       width: 200,
     },
   },
+  public: '/public',
 }

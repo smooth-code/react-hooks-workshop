@@ -1,0 +1,87 @@
+---
+name: Ex. 2 - Search Field
+order: 2
+---
+
+# Ex. 2 - Search Field
+
+## Instructions
+
+Dans un premier temps, nous allons nous concentrer sur le champs de recherche, un simple `input` contrôlé, nous afficherons la recherche tapée par l'utilisateur.
+
+Nous utiliserons [Smooth UI](https://smooth-ui.smooth-code.com/docs-components-input) afin d'avoir un `input` avec un joli style.
+
+- Installer `styled-components @smooth-ui/core-sc`
+- Créer un dossier `src/components`
+- Créer un composant `input` contrôle dans `src/components/SearchInput.js`
+- Placer le composant `SearchInput` dans `App` et afficher sa valeur à l'aide de `useState`
+- Supprimer les fichiers inutilisés, `App.css`, `logo.svg`, `App.test.js`
+
+### Résultat attendu
+
+Un champs de recherche simple, avec la recherche qui reflète ce qu'a tapé l'utilisateur.
+
+<img src="/public/ex-2.png" width="100%" alt="Résultat" />
+
+## Aide
+
+```bash
+# Installation de packages depuis npm
+npm i styled-components @smooth-ui/core-sc
+```
+
+```js
+// SearchInput.js
+import React from 'react'
+import { Input } from '@smooth-ui/core-sc'
+
+export default function SearchInput(props) {
+  return (
+    <Input
+      placeholder="Type something..."
+      width="100%"
+      type="search"
+      {...props}
+    />
+  )
+}
+```
+
+```js
+// App.js
+import React, { useState } from 'react'
+import { Normalize, Grid, Typography } from '@smooth-ui/core-sc'
+import SearchInput from './components/SearchInput'
+
+export default function App() {
+  /* TODO: A l'aide de "useState", connecter le champs "SearchInput" */
+  return (
+    <>
+      {/* Le composant "Grid" centre dans la page, "py" signifie "padding-top" et "padding-bottom" */}
+      <Grid py={200}>
+        {/* Injection de normalize.css pour avoir un rendu consistant sur tous les navigateurs */}
+        <Normalize />
+        {/* "Typography" est un composant avec des variantes de titres prêtes à l'emploi */}
+        <Typography variant="display-1">Smooth Movie</Typography>
+        {/* Votre composant "SearchInput" */}
+        <SearchInput
+          value={/* TODO: récupérer la valeur depuis le state */}
+          onChange={/* TODO: notifier les changements au state */}
+        />
+        <p>Search: {/* TODO: afficher la valeur depuis le state */}</p>
+      </Grid>
+    </>
+  )
+}
+```
+
+```js
+// Récupérer la valeur d'un input
+<input
+  onChange={event => {
+    // Un event est passé en paramètre, "target" désigne l'élément DOM "input"
+    // Un "input" a une propriété "value" qui correspond à la valeur qu'il contient
+    console.log(event.target.value)
+  }}
+/>
+```

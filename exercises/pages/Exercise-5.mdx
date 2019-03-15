@@ -1,0 +1,85 @@
+---
+name: Ex. 5 - Gestion des erreurs
+order: 5
+---
+
+# Ex. 5 - Gestion des erreurs
+
+## Instructions
+
+Actuellement notre application ne gère pas les cas d'erreur. Lorsque l'on utilise une API externe, on ne la maîtrise pas et il faut toujours s'attendre à avoir des erreurs.
+
+Nous allons utiliser les [Error Boundaries](https://reactjs.org/docs/error-boundaries.html), avec cette technique, nous serons à la fois tolérant aux erreurs issuent de l'API mais aussi à celles issues de notre propre code !
+
+- Créer une `ErrorBoundary` simple dans `src/components/Catch.js`
+- Englober toute l'application avec le composant `Catch` dans `index.js`
+- Modifier le hook custom `useMovieSearch` pour emettre une erreur lorsque la requète échoue
+
+### Résultat attendu
+
+Lorsque le champs de recherche est vide, j'obtiens une erreur.
+
+<img src="/public/ex-5.png" width="100%" alt="Résultat" />
+
+## Aide
+
+### Error Boundary
+
+```js
+import React, { Component } from 'react'
+
+export default class Catch extends Component {
+  state = { hasError: false }
+
+  static getDerivedStateFromError(error) {
+    // Mise à jour du state, au prochain rendu, nous saurons qu'une erreur a été catchée
+    return { hasError: true }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Affichage du fallback de notre choix
+      return <h1>Something went wrong.</h1>
+    }
+
+    return this.props.children
+  }
+}
+```
+
+### Utilisation de l'Error Boundary
+
+```js
+ReactDOM.render(
+  <Catch>
+    <App />
+  </Catch>,
+  document.getElementById('root'),
+)
+```
+
+### Stratégie pour `throw`
+
+```js
+import { useState, useEffect } from 'react'
+
+function useApi() {
+  // State contenant le résultat
+  const [state, setState] = useState({ result: null, error: null })
+
+  useEffect(() => {
+    request()
+      // Lorsque tout se passe bien, j'obtiens un résultat
+      .then(result => setResult({ result, error: null }))
+      // En cas d'erreur, le catch est appelé
+      .catch(error => setError({ error, result: null }))
+  })
+
+  // Si une erreur a été retournée par la requête, alors je throw
+  if (state.error) {
+    throw state.error
+  }
+
+  return state.result
+}
+```

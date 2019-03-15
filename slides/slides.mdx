@@ -598,6 +598,71 @@ function MountSpy() {
 
 ---
 
+# Custom Hooks
+
+---
+
+```js
+function App() {
+  const [query, setQuery] = useState('Lord of the Rings')
+  const [movies, setMovies] = useState(null)
+
+  useEffect(() => {
+    axios
+      .get('https://api.themoviedb.org/3/search/movie', {
+        params: {
+          api_key: 'c5742978852b8f695a61e22a33a8196c',
+          query,
+        },
+      })
+      .then(res => {
+        setMovies(res.data.results)
+      })
+  }, [query])
+
+  /* ... */
+}
+```
+
+---
+
+## Extraire notre Hook
+
+```js
+function useMovieSearch(query) {
+  const [movies, setMovies] = useState(null)
+
+  useEffect(() => {
+    axios
+      .get('https://api.themoviedb.org/3/search/movie', {
+        params: {
+          api_key: 'c5742978852b8f695a61e22a33a8196c',
+          query,
+        },
+      })
+      .then(res => {
+        setMovies(res.data.results)
+      })
+  }, [query])
+
+  return movies
+}
+```
+
+---
+
+## Quelques règles
+
+- Tous les hooks doivent être au premier niveau
+- Un custom hook est préfixé par `use`
+- Une seule reponsabilité par Hook
+
+---
+
+# Exercice 4 - Custom Hooks
+
+---
+
 # Error Boundaries
 
 ---
@@ -614,28 +679,23 @@ function MountSpy() {
 
 ---
 
-## Exemple
+## Implémentation
 
 ```js
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false }
-  }
+import React, { Component } from 'react'
+
+export default class Catch extends Component {
+  // Création du state initial
+  state = { hasError: false }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // Mise à jour du state, au prochain rendu, nous saurons qu'une erreur a été catchée
     return { hasError: true }
-  }
-
-  componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
-    logErrorToMyService(error, info)
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
+      // Affichage du fallback de notre choix
       return <h1>Something went wrong.</h1>
     }
 
@@ -654,7 +714,151 @@ class ErrorBoundary extends React.Component {
 
 ---
 
-# Exercice 4 - Handle errors
+# Exercice 5 - Handle errors
+
+---
+
+# Render props
+
+---
+
+## `useCounter`
+
+```js
+function useCounter() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => setCount(count => count + 1), 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return count
+}
+```
+
+---
+
+## Utilisation
+
+```js
+function Example() {
+  const count = useCounter()
+
+  return (
+    <div>
+      <OtherStuff />
+      <div>{count}</div>
+    </div>
+  )
+}
+```
+
+---
+
+## Que se passe-t-il ?
+
+- A chaque tick de l'interval, `setCount` est appelé
+- Un nouveau state est généré
+- Le composant `Example` est re-rendu
+
+---
+
+```js
+function Example() {
+  const count = useCounter()
+
+  return (
+    <div>
+      {/* OtherStuff va être re-rendu pourtant il n’utilise pas le compteur */}
+      <OtherStuff />
+      <div>{count}</div>
+    </div>
+  )
+}
+```
+
+---
+
+## Et si `useCounter` émet une erreur ?
+
+- L’erreur est émise par le composant qui contient le Hook
+- `Example` est donc l'émetteur de l’erreur
+
+---
+
+# Comment localiser une logique ?
+
+---
+
+## Render props
+
+```js
+function Counter({ children }) {
+  const count = useCounter()
+  return children(count)
+}
+```
+
+```js
+function Example() {
+  return (
+    <div>
+      <OtherStuff />
+      <Counter>{count => <div>{count}</div>}</Counter>
+    </div>
+  )
+}
+```
+
+---
+
+## Ce qui a changé
+
+```js
+function Example() {
+  return (
+    <div>
+      {/* Example, ne se re-rend plus, OtherStuff n'est donc pas re-rendu */}
+      <OtherStuff />
+      {/* Le compteur se re-rend et appelle la fonction "children" */}
+      <Counter>{count => <div>{count}</div>}</Counter>
+    </div>
+  )
+}
+```
+
+---
+
+## I believe I can catch!
+
+```js
+function Example() {
+  return (
+    <div>
+      <OtherStuff />
+      {/* Je peux placer une Error Boundary autour de mon composant "Counter" */}
+      <Catch>
+        <Counter>{count => <div>{count}</div>}</Counter>
+      </Catch>
+    </div>
+  )
+}
+```
+
+---
+
+## À retenir
+
+> Les hooks ne remplacent pas les render props
+
+> Les render props permettent une isolation du rendu
+
+> Elle permettent une gestion fine des erreurs
+
+---
+
+# Exercice 6 - Render props
 
 ---
 
@@ -721,7 +925,7 @@ function Example() {
 
 ---
 
-# Exercice 5 - Loading
+# Exercice 7 - Gestion du state avancée
 
 ---
 
@@ -729,7 +933,444 @@ function Example() {
 
 ---
 
-# Exercice 6 - Card component
+## Styled Components
+
+<iframe
+  src="https://codesandbox.io/embed/2vpm40qk90?autoresize=1&fontsize=14&hidenavigation=1"
+  style={{
+    width: '80vw',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
+
+---
+
+## Styled Components
+
+- Le style fait parti du composant
+- Le style change en fonction des props
+- Du vrai CSS !
+
+---
+
+## Comment créer un composant Card ?
+
+---
+
+import Card from './components/Card'
+
+## Ce que je veux obtenir
+
+<Card>
+  <Card.Header>Hello!</Card.Header>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+
+---
+
+## Je crée mon composant !
+
+```js
+const CardHeader = styled.div``
+const CardBody = styled.div``
+
+function Card({ title, text }) {
+  return (
+    <div>
+      <CardHeader>{title}</CardHeader>
+      <CardBody>{text}</CardBody>
+    </div>
+  )
+}
+```
+
+```js
+<Card title="Hello!" text="I am Card" />
+```
+
+---
+
+# Ça marche !
+
+---
+
+# A new developer is coming!
+
+<iframe
+  src="https://giphy.com/embed/Cmr1OMJ2FN0B2"
+  width="480"
+  height="431"
+  frameBorder="0"
+  allowFullScreen
+/>
+
+---
+
+# Je ne veux pas de titre !
+
+<Card>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+
+---
+
+## OK, pas de soucis !
+
+```js
+const CardHeader = styled.div``
+const CardBody = styled.div``
+
+function Card({ title, text }) {
+  return (
+    <div>
+      {title && <CardHeader>{title}</CardHeader>}
+      <CardBody>{text}</CardBody>
+    </div>
+  )
+}
+```
+
+---
+
+# Another developer is coming!
+
+<iframe
+  src="https://giphy.com/embed/3ornk57KwDXf81rjWM"
+  width="480"
+  height="431"
+  frameBorder="0"
+  allowFullScreen
+/>
+
+---
+
+# Je veux le titre sur un fond vert
+
+<Card>
+  <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+
+---
+
+## OK...
+
+```js
+const CardHeader = styled.div``
+const CardBody = styled.div``
+
+function Card({ title, titleBackgroundColor, text }) {
+  return (
+    <div>
+      {title && (
+        <CardHeader style={{ backgroundColor: titleBackgroundColor }}>
+          {title}
+        </CardHeader>
+      )}
+      <CardBody>{text}</CardBody>
+    </div>
+  )
+}
+```
+
+---
+
+# A new developer is coming!
+
+<iframe
+  src="https://giphy.com/embed/t98sHJAJ69MCoMoXAr"
+  width="480"
+  height="431"
+  frameBorder="0"
+  allowFullScreen
+/>
+
+---
+
+# Je veux une status bar à la place du header
+
+<Card>
+  <div
+    style={{
+      padding: 5,
+      backgroundColor: 'black',
+      color: 'white',
+      fontSize: 14,
+    }}
+  >
+    My status bar
+  </div>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+
+---
+
+## Euh...
+
+```js
+const CardHeader = styled.div``
+const CardBody = styled.div``
+const StatusBar = styled.div``
+
+function Card({ title, titleBackgroundColor, statusBar, text }) {
+  return (
+    <div>
+      {statusBar && <StatusBar>{statusBar}</StatusBar>}
+      {title && (
+        <CardHeader style={{ backgroundColor: titleBackgroundColor }}>
+          {title}
+        </CardHeader>
+      )}
+      <CardBody>{text}</CardBody>
+    </div>
+  )
+}
+```
+
+---
+
+<iframe
+  src="https://giphy.com/embed/46itMIe0bkQeY"
+  width="480"
+  height="267"
+  frameBorder="0"
+  allowFullScreen
+/>
+
+---
+
+# Et si on avait fait autrement ?
+
+---
+
+```js
+export const CardHeader = styled.div``
+export const CardBody = styled.div``
+export const Card = styled.div``
+```
+
+```js
+<Card>
+  <CardHeader>Hello!</CardHeader>
+  <CardBody>I am a card</CardBody>
+</Card>
+```
+
+---
+
+# Les choses auraient été bien différentes...
+
+---
+
+## Sans toucher au code
+
+```js
+<Card>
+  <CardBody>I am a card</CardBody>
+</Card>
+```
+
+```js
+<Card>
+  <CardHeader style={{ backgroundColor: 'green' }}>Hello!</CardHeader>
+  <CardBody>I am a card</CardBody>
+</Card>
+```
+
+```js
+<Card>
+  <CardStatusBar>Hello!</CardStatusBar>
+  <CardBody>I am a card</CardBody>
+</Card>
+```
+
+---
+
+> Utilisez les children et composez vos composants !
+
+---
+
+# Exercice 8 - Card component
+
+---
+
+# Contexte
+
+---
+
+## A quoi sert le contexte ?
+
+- Faire communiquer deux composants distant
+
+---
+
+## Exemple
+
+```js
+import React, { createContext, useContext } from 'react'
+
+// On crée un `ThemeContext` avec pour valeur par défaut "white"
+const ThemeContext = createContext('white')
+
+function Button({ children }) {
+  // On récupère la valeur injecté dans le contexte avec `useContext`
+  const theme = useContext(ThemeContext)
+  return <button style={{ color: theme }}>{children}</button>
+}
+
+function App() {
+  // Le `Context.Provider` permet d'injecter une valeur dans `ThemeContext`
+  // Tous les enfants ont alors accès à cette valeur
+  return (
+    <ThemeContext.Provider value="black">
+      <Button>Hello</Button>
+    </ThemeContext.Provider>
+  )
+}
+```
+
+---
+
+## Que se passe-t-il ?
+
+- Le `Provider` subit un mount/update
+- La valeur injectée est-elle différente ?
+  - Oui -> les `Consumer` sont re-rendus
+  - Non -> rien ne se passe
+
+---
+
+## Contexte riche
+
+```js
+function ThemeProvider({ color, font }) {
+  // L'objet `value` est nouveau à chaque rendu
+  // `ThemeContext` notifie donc ses "consumers" à chaque rendu
+  const value = { color, font }
+  return (
+    <ThemeContext.Provider value={value}>
+      <App />
+    </ThemeContext.Provider>
+  )
+}
+```
+
+---
+
+## `useMemo`
+
+```js
+function ThemeProvider({ theme }) {
+  // `useMemo` mémorise le résultat de la fonction tant que les dépendances ne changent pas
+  // Tant que `theme` n'a pas changé, on aura le même objet `value`
+  const value = useMemo(() => ({ theme }), [theme])
+  return (
+    <ThemeContext.Provider value={value}>
+      <App />
+    </ThemeContext.Provider>
+  )
+}
+```
+
+---
+
+## Contexte dynamique
+
+```js
+function ThemeProvider({ defaultTheme, children }) {
+  // Un `state` contient le `theme`
+  const [theme, setTheme] = useState(defaultTheme)
+  // On injecte la fonction `setTheme` dans le contexte
+  const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme])
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+}
+
+// in another file...
+
+function ThemeSwitcher() {
+  const { theme, setTheme } = useContext(ThemeContext)
+  return (
+    <button
+      onClick={() => setTheme(theme => (theme === 'dark' ? 'light' : 'dark'))}
+    >
+      Switch theme {theme}
+    </button>
+  )
+}
+```
+
+---
+
+# Et Redux ?
+
+---
+
+## Qu'est-ce que Redux ?
+
+- Communication entre les composants
+- State modifié par un reducer
+- Connect / Dispatch
+
+---
+
+## Qu'est-ce que Redux ?
+
+- `createContext`
+- `useReducer`
+- `useContext`
+
+---
+
+```js
+// redux.js
+import React, { createContext, useReducer, useContext } from 'react'
+
+const ReduxContext = createContext()
+
+export function ReduxProvider({ reducer, initialState, children }) {
+  // On cré un reducer
+  const [state, dispatch] = useReducer(reducer, initialState)
+  // On injecte le state et la fonction dispatch
+  const value = useMemo(() => ({ state, dispatch }), [state, dispatch])
+  return <ReduxContext.Provider value={value}>{children}</ReduxContext.Provider>
+}
+
+export function useRedux() {
+  return useContext(ReduxContext)
+}
+
+// App.js
+import React from 'react'
+import { ReduxProvider } from './redux'
+import { reducer, initialState } from './reducer'
+
+export default function App() {
+  return (
+    <ReduxProvider reducer={reducer} initialState={initialState}>
+      <>
+        {/* ... */}
+        <RegisterButton />
+      </>
+    </ReduxProvider>
+  )
+}
+
+// RegisterButton.js
+import React from 'react'
+import { useRedux } from './redux'
+
+function RegisterButton() {
+  const { dispatch } = useContext(ReduxContext)
+
+  return (
+    <button onClick={() => dispatch({ type: 'register' })}>Register</button>
+  )
+}
+```
 
 ---
 
@@ -737,11 +1378,86 @@ function Example() {
 
 ---
 
-# Exercice 8 - Raccourcis clavier
+# Interaction avec le DOM
 
 ---
 
-# Exercice 9 - Debounce
+## Component Refs
+
+```js
+function Example() {
+  // `ref.current` sera la référence vers l'élément une fois le composant monté
+  const ref = useRef()
+  return <input type="text" ref={ref} />
+}
+```
+
+---
+
+## Forward Ref
+
+```js
+const FancyInput = React.forwardRef((props, ref) => (
+  <input ref={ref} className="FancyInput" />
+))
+
+function Example() {
+  // `ref.current` sera la référence à l'élément DOM button
+  const ref = useRef()
+  return <FancyInput ref={ref} />
+}
+```
+
+---
+
+## `useImperativeHandle`
+
+```js
+const FancyInput = forwardRef((props, ref) => {
+  const inputRef = useRef()
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus()
+    },
+  }))
+
+  return <input ref={inputRef} className="FancyInput" />
+})
+
+function Example() {
+  // `ref.current.focus()` fonctionnera
+  const ref = useRef()
+  return <FancyInput ref={ref} />
+}
+```
+
+---
+
+## `useImperativeHandle`
+
+- Permet de customiser l’instance générée par `useRef`
+- A n’utiliser qu’avec `forwardRef`
+
+---
+
+# Exercice 8 - Forward ref
+
+---
+
+# Custom Hooks
+
+---
+
+##
+
+---
+
+# Exercice 9 - Raccourcis clavier
+
+---
+
+# Exercice 10 - Debounce
 
 ---
 
@@ -858,5 +1574,3 @@ function Example() {
   return <div ref={divRef} />
 }
 ```
-
----
