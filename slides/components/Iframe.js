@@ -38,7 +38,7 @@ const styles = {
   `,
 }
 
-export default function Iframe({ src }) {
+export default function Iframe({ src, ...props }) {
   const [loaded, setLoaded] = useState()
   return (
     <div css={styles.container}>
@@ -52,6 +52,7 @@ export default function Iframe({ src }) {
         }}
         frameborder="0"
         src={src}
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />
     </div>
   )

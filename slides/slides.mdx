@@ -117,11 +117,13 @@ Co-fondateur de Smooth Code
 
 ---
 
-## State of Front-end
+## À retenir
 
-- React est incontournable
-- Vue est en croissance
-- Angular est sur le déclin
+> 👉 React est incontournable
+
+> 👉 Vue est en croissance
+
+> 👉 Angular est sur le déclin
 
 ---
 
@@ -278,6 +280,16 @@ const fn = ({ foo }) => foo
 
 ---
 
+## À retenir
+
+> 👉 JSX : extension de JavaScript
+
+> 👉 Element : morceau de JSX
+
+> 👉 Composant : fonction qui renvoie un élément
+
+---
+
 # Lifecycle React
 
 ---
@@ -316,6 +328,14 @@ const fn = ({ foo }) => foo
 
 ---
 
+## À retenir
+
+> 👉 Trois phases : Mount, Update, Unmount
+
+> 👉 Le rendu est déclenché lors du Mount et de l'Update
+
+---
+
 # Démarrer avec React
 
 ---
@@ -345,6 +365,12 @@ const fn = ({ foo }) => foo
 - ✨ CSS Autoprefixer
 - 🃏 Test runner (Jest)
 - 🦁 Gestion des SVG (SVGR)
+
+---
+
+## À retenir
+
+> 👉 Projet React → create-react-app
 
 ---
 
@@ -386,10 +412,11 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-## Conseils
+## À retenir
 
-- Migrer son code progressivement 🤗
-- Ne pas se forcer à les utiliser 🤯
+> 👉 Migrer son code progressivement 🤗
+
+> 👉 Ne pas se forcer à les utiliser 🤯
 
 ---
 
@@ -431,16 +458,52 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-# `useState`
+---
+
+# Rules of Hooks
 
 ---
 
-## Compteur
+<h2>Uniquement dans les fonctions,<br />tu les utiliseras.</h2>
+
+```js
+function Example(props) {
+  // ✅ Vous pouvez utiliser les hooks ici
+  return <div />
+}
+```
+
+> Pas de Hooks dans les classes.
+
+---
+
+<h2>Au niveau le plus haut,<br />tu te positionneras.</h2>
+
+```js
+function Example(props) {
+  if (props.disabled) {
+    // 🚫 Vous ne pouvez pas utiliser les hooks ici
+  }
+  return <div />
+}
+```
+
+> Pas de conditions, boucles ou autre...
+
+---
+
+# `useState` Hook
+
+---
+
+## Hook Counter
 
 ```js
 import React, { useState } from 'react'
 
 function Example() {
+  // "count" est le state, "setCount" est la fonction permettant de modifier le state
+  // "0" est la valeur initiale
   const [count, setCount] = useState(0)
 
   return (
@@ -454,7 +517,7 @@ function Example() {
 
 ---
 
-## Équivalent
+## Class Counter
 
 ```js
 class Example extends React.Component {
@@ -480,45 +543,12 @@ class Example extends React.Component {
 
 ---
 
-## Seulement dans les fonctions !
-
-```js
-const Example = props => {
-  // You can use Hooks here!
-  return <div />
-}
-```
-
-- Seulement au niveau le plus haut
-- Pas de conditions
-
----
-
-## Fonctions ou constantes ?
-
-```js
-const Example = props => {
-  // You can use Hooks here!
-  return <div />
-}
-```
-
-```js
-function Example(props) {
-  // You can use Hooks here!
-  return <div />
-}
-```
-
-> 👉 Préférez les fonctions
-
----
-
 ## Le state n’est pas mergé
 
 ```js
 const [coords, setCoords] = useState({ x: 10, y: 20 })
-setCoords({ x: 15 }) // the new coords will be { x: 15 } and not { x: 10, y: 15 }
+setCoords({ x: 15 })
+// Les nouvelles coordonnées seront { x: 15 } et pas { x: 10, y: 15 }
 ```
 
 ---
@@ -527,7 +557,7 @@ setCoords({ x: 15 }) // the new coords will be { x: 15 } and not { x: 10, y: 15 
 
 ```js
 function ExampleWithManyStates() {
-  // Declare multiple state variables!
+  // Déclarer plusieurs state dans la même fonction !
   const [age, setAge] = useState(42)
   const [fruit, setFruit] = useState('banana')
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }])
@@ -536,14 +566,6 @@ function ExampleWithManyStates() {
 ```
 
 > 👉 Ne pas hésiter à décomposer les states
-
----
-
-## État par défaut
-
-```js
-const [value, setValue] = useState(0) // 0 est la valeur par défaut
-```
 
 ---
 
@@ -630,7 +652,7 @@ function ControlledInput({ defaultValue, ...props }) {
 
 ---
 
-## Conclusion
+## À retenir
 
 > 👉 Toujours privilégier les composants contrôlés 👮‍♂️
 
@@ -859,7 +881,7 @@ function useMovieSearch(query) {
 
 ---
 
-## Quelques règles
+## Rules of Hooks
 
 - Tous les hooks doivent être au premier niveau
 - Un custom hook est préfixé par `use`
@@ -867,7 +889,7 @@ function useMovieSearch(query) {
 
 ---
 
-# Exercice 4 - Custom Hooks
+<Exercise num={4} title="Custom Hooks" />
 
 ---
 
@@ -883,7 +905,7 @@ function useMovieSearch(query) {
 </ErrorBoundary>
 ```
 
-> Comparable à un try / catch
+> 👉 Comparable à un try / catch
 
 ---
 
@@ -914,23 +936,21 @@ export default class Catch extends Component {
 
 ---
 
-## Conseils
+## À retenir
 
-> Mettre des boundaries aux endroits stratégique
-
-> Pourquoi pas pour le data-fetching ?
+> 👉 Mettre des boundaries aux endroits stratégique
 
 ---
 
-# Exercice 5 - Handle errors
+<Exercise num={5} title="Error Handling" />
 
 ---
 
-# Render props
+# Limite des Boundaries
 
 ---
 
-## `useCounter`
+## Prenons un Hook
 
 ```js
 function useCounter() {
@@ -947,7 +967,7 @@ function useCounter() {
 
 ---
 
-## Utilisation
+## Dans un composant...
 
 ```js
 function Example() {
@@ -971,6 +991,8 @@ function Example() {
 - Le composant `Example` est re-rendu
 
 ---
+
+## Pauvre `OtherStuff`, il n'a rien demandé !
 
 ```js
 function Example() {
@@ -999,20 +1021,31 @@ function Example() {
 
 ---
 
-## Render props
+# Render props
+
+---
+
+## Implémentation
 
 ```js
 function Counter({ children }) {
   const count = useCounter()
+  // `children` est habituellement un ou plusieurs élément
+  // ici ce sera une fonction, la "render prop" !
   return children(count)
 }
 ```
+
+---
+
+## Utilisation
 
 ```js
 function Example() {
   return (
     <div>
       <OtherStuff />
+      {/* On passe une fonction en `children` */}
       <Counter>{count => <div>{count}</div>}</Counter>
     </div>
   )
@@ -1058,15 +1091,15 @@ function Example() {
 
 ## À retenir
 
-> Les hooks ne remplacent pas les render props
+> 👉 Les hooks ne remplacent pas les render props
 
-> Les render props permettent une isolation du rendu
+> 👉 Les render props permettent une isolation du rendu
 
-> Elle permettent une gestion fine des erreurs
+> 👉 Elle permettent une gestion fine des erreurs
 
 ---
 
-# Exercice 6 - Render props
+<Exercise num={6} title="Render props" />
 
 ---
 
@@ -1074,7 +1107,7 @@ function Example() {
 
 ---
 
-## La gestion du state, c’est dur
+## La gestion du state, c’est compliqué
 
 ```js
 function Example() {
@@ -1089,15 +1122,26 @@ function Example() {
 }
 ```
 
----
-
-# Comment organiser ça ?
+La logique est interne au composant, c'est mal 🙄.
 
 ---
 
-## `useReducer`
+# `useReducer` à la rescousse !
+
+<iframe
+  src="https://giphy.com/embed/l0HlTPnnfzRsf4f2U"
+  width="480"
+  height="270"
+  frameBorder="0"
+  allowFullScreen
+/>
+
+---
+
+## Même exemple avec `useReducer`
 
 ```js
+// Le reducer est une simple fonction testable
 function reducer(count, action) {
   switch (action.type) {
     case 'increment':
@@ -1112,6 +1156,7 @@ function reducer(count, action) {
 function Example() {
   const [count, dispatch] = useReducer(reducer)
 
+  // Le composant se contente d'émettre des actions
   return (
     <div>
       <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
@@ -1123,17 +1168,17 @@ function Example() {
 
 ---
 
-## Avantages
+## À retenir
 
-> Gestion du state centralisée
+> 👉 Gestion du state centralisée
 
-> Le reducer est testable
+> 👉 Le reducer est testable
 
-> Le code des composants est plus clair
+> 👉 Le code des composants est plus clair
 
 ---
 
-# Exercice 7 - Gestion du state avancée
+<Exercise num={7} title="Advanced State" />
 
 ---
 
@@ -1143,17 +1188,7 @@ function Example() {
 
 ## Styled Components
 
-<iframe
-  src="https://codesandbox.io/embed/2vpm40qk90?autoresize=1&fontsize=14&hidenavigation=1"
-  style={{
-    width: '80vw',
-    height: 500,
-    border: 0,
-    borderRadius: 4,
-    overflow: 'hidden',
-  }}
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-/>
+<Iframe src="https://codesandbox.io/embed/2vpm40qk90?autoresize=1&fontsize=14&hidenavigation=1" />
 
 ---
 
@@ -1206,7 +1241,7 @@ function Card({ title, text }) {
 
 ---
 
-# A new developer is coming!
+# A new product owner is coming!
 
 <iframe
   src="https://giphy.com/embed/Cmr1OMJ2FN0B2"
@@ -1218,7 +1253,7 @@ function Card({ title, text }) {
 
 ---
 
-# Je ne veux pas de titre !
+# “Tu peux enlever le titre ?”
 
 <Card>
   <Card.Body>I am a Card</Card.Body>
@@ -1226,7 +1261,7 @@ function Card({ title, text }) {
 
 ---
 
-## OK, pas de soucis !
+## “OK, pas de soucis !”
 
 ```js
 const CardHeader = styled.div``
@@ -1244,7 +1279,7 @@ function Card({ title, text }) {
 
 ---
 
-# Another developer is coming!
+# A UX designer is coming!
 
 <iframe
   src="https://giphy.com/embed/3ornk57KwDXf81rjWM"
@@ -1256,7 +1291,7 @@ function Card({ title, text }) {
 
 ---
 
-# Je veux le titre sur un fond vert
+# “Le titre sur un fond vert est plus parlant.”
 
 <Card>
   <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
@@ -1265,7 +1300,7 @@ function Card({ title, text }) {
 
 ---
 
-## OK...
+## “OK, je pense que je peux le faire.”
 
 ```js
 const CardHeader = styled.div``
@@ -1287,7 +1322,7 @@ function Card({ title, titleBackgroundColor, text }) {
 
 ---
 
-# A new developer is coming!
+<h1>A new marketing manager<br/> appears!</h1>
 
 <iframe
   src="https://giphy.com/embed/t98sHJAJ69MCoMoXAr"
@@ -1299,7 +1334,7 @@ function Card({ title, titleBackgroundColor, text }) {
 
 ---
 
-# Je veux une status bar à la place du header
+# “Tu peux mettre une barre de pub à la place du header ?”
 
 <Card>
   <div
@@ -1310,24 +1345,24 @@ function Card({ title, titleBackgroundColor, text }) {
       fontSize: 14,
     }}
   >
-    My status bar
+    👻 -50% on all articles, happy halloween!
   </div>
   <Card.Body>I am a Card</Card.Body>
 </Card>
 
 ---
 
-## Euh...
+## “Euh...”
 
 ```js
 const CardHeader = styled.div``
 const CardBody = styled.div``
-const StatusBar = styled.div``
+const CardAd = styled.div``
 
-function Card({ title, titleBackgroundColor, statusBar, text }) {
+function Card({ title, titleBackgroundColor, ad, text }) {
   return (
     <div>
-      {statusBar && <StatusBar>{statusBar}</StatusBar>}
+      {ad && <CardAd>{ad}</CardAd>}
       {title && (
         <CardHeader style={{ backgroundColor: titleBackgroundColor }}>
           {title}
@@ -1356,16 +1391,9 @@ function Card({ title, titleBackgroundColor, statusBar, text }) {
 ---
 
 ```js
-export const CardHeader = styled.div``
-export const CardBody = styled.div``
 export const Card = styled.div``
-```
-
-```js
-<Card>
-  <CardHeader>Hello!</CardHeader>
-  <CardBody>I am a card</CardBody>
-</Card>
+Card.Body = styled.div``
+Card.Header = styled.div``
 ```
 
 ---
@@ -1374,35 +1402,87 @@ export const Card = styled.div``
 
 ---
 
-## Sans toucher au code
-
-```js
 <Card>
-  <CardBody>I am a card</CardBody>
+  <Card.Header>Hello!</Card.Header>
+  <Card.Body>I am a card</Card.Body>
 </Card>
-```
 
 ```js
 <Card>
-  <CardHeader style={{ backgroundColor: 'green' }}>Hello!</CardHeader>
-  <CardBody>I am a card</CardBody>
-</Card>
-```
-
-```js
-<Card>
-  <CardStatusBar>Hello!</CardStatusBar>
-  <CardBody>I am a card</CardBody>
+  <Card.Header>Hello!</Card.Header>
+  <Card.Body>I am a card</Card.Body>
 </Card>
 ```
 
 ---
 
-> Utilisez les children et composez vos composants !
+<Card>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+
+```js
+<Card>
+  <Card.Body>I am a card</Card.Body>
+</Card>
+```
 
 ---
 
-# Exercice 8 - Composants Scalables
+<Card>
+  <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+
+```js
+<Card>
+  <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
+  <Card.Body>I am a Card</Card.Body>
+</Card>
+```
+
+---
+
+<Card>
+  <div
+    style={{
+      padding: 5,
+      backgroundColor: 'black',
+      color: 'white',
+      fontSize: 14,
+    }}
+  >
+    👻 -50% on all articles, happy halloween!
+  </div>
+  <Card.Body>I am a card</Card.Body>
+</Card>
+
+```js
+<Card>
+  <div
+    style={{
+      padding: 5,
+      backgroundColor: 'black',
+      color: 'white',
+      fontSize: 14,
+    }}
+  >
+    👻 -50% on all articles, happy halloween!
+  </div>
+  <Card.Body>I am a card</Card.Body>
+</Card>
+```
+
+---
+
+## À retenir
+
+> 👉 Pensez aux "children"
+
+> 👉 Un composant par élément DOM
+
+---
+
+<Exercise num={8} title="Scalable Components" />
 
 ---
 
