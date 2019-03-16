@@ -9,8 +9,10 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@smooth-ui/core-em": "^9.1.0",
     "mdx-deck": "^2.0.0-11",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-event-timeline": "^1.6.3"
   }
 }

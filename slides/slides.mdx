@@ -1,4 +1,19 @@
 export { default as themes } from './themes'
+import { Appear } from 'mdx-deck'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faGithub,
+  faTwitter,
+  faFacebook,
+  faInstagram,
+} from '@fortawesome/free-brands-svg-icons'
+import {
+  faLightbulb,
+  faMobileAlt,
+  faCubes,
+  faFish,
+} from '@fortawesome/free-solid-svg-icons'
+import { Timeline, TimelineEvent } from './components/Timeline'
 
 <img
   src="https://res.cloudinary.com/smooth/image/upload/v1552399812/logos/smooth-academy.svg"
@@ -6,18 +21,14 @@ export { default as themes } from './themes'
   width="30%"
 />
 
-# React Advanced Workshop
+<h1>React Advanced<br />Workshop</h1>
 
 ---
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
-
 <img
-  src="https://res.cloudinary.com/smooth/image/upload/v1551174170/avatars/greg-berge.jpg"
-  alt="Smooth Academy"
-  width="20%"
-  style={{ borderRadius: '50%' }}
+  src="https://res.cloudinary.com/smooth/image/upload/w_300,h_300,dpr_2/v1551174170/avatars/greg-berge.jpg"
+  alt="Greg Bergé"
+  style={{ width: '50%', maxWidth: 300, borderRadius: '50%' }}
 />
 
 ### Greg Bergé
@@ -25,15 +36,19 @@ import { faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons'
 Développeur full-stack JavaScript.<br />
 Co-fondateur de Smooth Code
 
-<FontAwesomeIcon icon={faGithub} /> <FontAwesomeIcon icon={faTwitter} /> @neoziro
+<div>
+  <a style={{ textDecoration: 'none' }} href="https://github.com/neoziro">
+    <FontAwesomeIcon icon={faGithub} /> @neoziro
+  </a>
+  {' | '}
+  <a style={{ textDecoration: 'none' }} href="https://github.com/neoziro">
+    <FontAwesomeIcon icon={faTwitter} /> @neoziro
+  </a>
+</div>
 
 ---
 
 # Sommaire
-
----
-
-# Introduction
 
 ---
 
@@ -43,16 +58,57 @@ Co-fondateur de Smooth Code
 
 ## Historique
 
-- 2010 - Jordan Walke crée React (Reason)
-- 2011 - React est utilisé sur le feed Facebook
-- 2012 - React est utilisé sur Instagram
-- 2015 - Facebook open source React Native
-- 2017 - Facebook annonce React Fiber
-- 2018 - Suspense + React Hooks
+<Timeline>
+  <Appear>
+    <TimelineEvent
+      title="Jordan Walke crée React (Reason)"
+      createdAt="2010"
+      icon={
+        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faLightbulb} />
+      }
+    />
+    <TimelineEvent
+      title="Feed Facebook avec React"
+      createdAt="2011"
+      iconColor="#3C5A99"
+      icon={
+        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faFacebook} />
+      }
+    />
+    <TimelineEvent
+      title="Instagram web en React"
+      createdAt="2012"
+      iconColor="#E1306C"
+      icon={
+        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faInstagram} />
+      }
+    />
+    <TimelineEvent
+      title="React Native Open Source"
+      createdAt="2015"
+      iconColor="#005068"
+      icon={
+        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faMobileAlt} />
+      }
+    />
+    <TimelineEvent
+      title="React Fiber"
+      createdAt="2017"
+      icon={
+        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faCubes} />
+      }
+    />
+    <TimelineEvent
+      title="React Hooks"
+      createdAt="2019"
+      icon={<FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faFish} />}
+    />
+  </Appear>
+</Timeline>
 
 ---
 
-## Downloads
+## React vs Vue vs Angular
 
 <iframe
   style={{ width: '80vw', height: '70vh', overflow: 'hidden' }}
@@ -62,11 +118,15 @@ Co-fondateur de Smooth Code
 
 ---
 
-## Evolution
+## State of Front-end
 
 - React est incontournable
 - Vue est en croissance
 - Angular est sur le déclin
+
+---
+
+# Glossaire
 
 ---
 
@@ -76,6 +136,8 @@ Co-fondateur de Smooth Code
 - Permet la création de nouvelles features
 - Hooks, Suspense, Concurrent Mode...
 
+> 👉 Aucun impact pour le développeur
+
 ---
 
 ## Hooks ?
@@ -83,7 +145,7 @@ Co-fondateur de Smooth Code
 - Nouvelle API de création de composants
 - Sortie le 6 février 2019 (v16.8)
 
-> Simplification du développement
+> 👉 Simplification du développement
 
 ---
 
@@ -92,18 +154,37 @@ Co-fondateur de Smooth Code
 - Rendu non bloquant
 - Permet d'optimiser les performances
 - Mode strict requis
-- Sortie Q2 2019
+- Sortie à venir (Q2 2019)
 
-> Application plus fluide et performante
+> 👉 Application plus fluide et performante
 
 ---
 
 ## Suspense ?
 
 - Solution pour gérer le data-fetching
-- Sortie mid 2019
+- Sortie à venir (mid 2019)
 
-> Solution officielle pour gérer le data-fetching
+> 👉 Data-fetching simplifié
+
+---
+
+## SSR ?
+
+- Server Side Rendering
+- Aussi appelé "Universal Web App"
+- Le HTML est générée côté serveur
+- Inverse de CSR (Client Side Rendering)
+
+> 👉 Le seul use-case est le SEO
+
+---
+
+## Progressive Web App ?
+
+- Application qui fonctionne en offline
+
+> 👉 C'est un must-have, rarement requis
 
 ---
 

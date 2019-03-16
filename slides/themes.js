@@ -24,6 +24,7 @@ export default [
       margin-left: -30px;
       margin-right: -30px;
       position: relative;
+      text-align: left;
 
       > p {
         padding: 0 10px;
