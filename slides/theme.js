@@ -1,4 +1,4 @@
-import base, { dark, syntaxHighlighterPrism } from '@mdx-deck/themes'
+import base, { syntaxHighlighterPrism } from '@mdx-deck/themes'
 import { css } from '@emotion/core'
 import prismStyle from 'react-syntax-highlighter/dist/styles/prism/solarizedlight'
 
