@@ -1,6 +1,6 @@
 export default {
-  title: 'React Hooks Training',
-  description: 'React Hooks Training by Smooth Code',
+  title: 'React Hooks Workshop',
+  description: 'React Hooks Workshop by Greg Bergé',
   repository: 'https://github.com/smooth-code/react-hooks-workshop',
   ordering: 'ascending',
   themeConfig: {
