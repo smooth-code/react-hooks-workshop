@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "mdx-deck slides.mdx",
-    "build": "mdx-deck build slides.mdx"
+    "build": "mdx-deck build slides.mdx && cp _redirects ./dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",

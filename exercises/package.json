@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "docz dev",
-    "build": "docz build"
+    "build": "docz build && cp _redirects .docz/dist"
   },
   "dependencies": {
     "react": "^16.8.4",
