@@ -2,6 +2,7 @@ export { default as theme } from './theme'
 import GridLayout from './components/GridLayout'
 import Iframe from './components/Iframe'
 import Exercise from './components/Exercise'
+import Title from './components/Title'
 import { Appear } from 'mdx-deck'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -51,11 +52,10 @@ Co-fondateur de Smooth Code
 
 ---
 
-# Sommaire
-
----
-
-# State of React
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/160/square_480/EGH_ReactBeginners.png" />
+  <Title.Text>State of React</Title.Text>
+</Title>
 
 ---
 
@@ -127,7 +127,10 @@ Co-fondateur de Smooth Code
 
 ---
 
-# Glossaire
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/228/full/EGH_ReactStorybook_Final.png" />
+  <Title.Text>Glossaire</Title.Text>
+</Title>
 
 ---
 
@@ -189,7 +192,10 @@ Co-fondateur de Smooth Code
 
 ---
 
-# Primitives React
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/027/square_480/course_image.png" />
+  <Title.Text>Primitives React</Title.Text>
+</Title>
 
 ---
 
@@ -290,7 +296,10 @@ const fn = ({ foo }) => foo
 
 ---
 
-# Lifecycle React
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/085/square_480/EGH_ImageGallery_Final.png" />
+  <Title.Text>Lifecycle</Title.Text>
+</Title>
 
 ---
 
@@ -336,7 +345,10 @@ const fn = ({ foo }) => foo
 
 ---
 
-# Démarrer avec React
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/014/square_480/course_image.png" />
+  <Title.Text>Démarrer avec React</Title.Text>
+</Title>
 
 ---
 
@@ -378,7 +390,10 @@ const fn = ({ foo }) => foo
 
 ---
 
-# React Hooks
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/263/square_480/EGH_SimplifyHooks_Final.png" />
+  <Title.Text>React Hooks</Title.Text>
+</Title>
 
 ---
 
@@ -420,9 +435,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-# Qu'est-ce qu’un Hook 🎣 ?
-
----
+## Qu'est-ce qu’un Hook 🎣 ?
 
 <dl>
   <dt>React Hook</dt>
@@ -434,11 +447,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-# Hooks natifs
-
----
-
-## Basics
+## Hooks basics 😇
 
 - `useState`
 - `useEffect`
@@ -446,7 +455,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-## Avancés
+## Hooks avancés 😈
 
 - `useReducer`
 - `useCallBack`
@@ -458,9 +467,10 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
----
-
-# Rules of Hooks
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/194/square_480/EGH_ReactMobileNav_Final.png" />
+  <Title.Text>Rules of Hooks</Title.Text>
+</Title>
 
 ---
 
@@ -492,7 +502,10 @@ function Example(props) {
 
 ---
 
-# `useState` Hook
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/114/square_480/EGH_ReactRecompose_Final.png" />
+  <Title.Text>State Management</Title.Text>
+</Title>
 
 ---
 
@@ -604,7 +617,10 @@ setCount(previousCount => previousCount + 1)
 
 ---
 
-<h1>Controlled 👮‍♂️ <br />or uncontrolled 🤪</h1>
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/197/square_480/Manage_React_Form.png" />
+  <Title.Text>Controlled VS uncontrolled</Title.Text>
+</Title>
 
 ---
 
@@ -662,7 +678,10 @@ function ControlledInput({ defaultValue, ...props }) {
 
 ---
 
-# `useEffect`
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/193/square_480/EGH_OptimisticReact_Final.png" />
+  <Title.Text>Effects</Title.Text>
+</Title>
 
 ---
 
@@ -794,7 +813,7 @@ useEffect(() => {
 
 ---
 
-## Effect Dependencies
+## Dépendances
 
 ```js
 function PageTitle({ title }) {
@@ -828,9 +847,14 @@ function MountSpy() {
 
 ---
 
-# Custom Hooks
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/264/square_480/EGH_ReactHooks_Final_%281%29.png" />
+  <Title.Text>Custom Hooks</Title.Text>
+</Title>
 
 ---
+
+## Composition de Hooks
 
 ```js
 function App() {
@@ -893,7 +917,10 @@ function useMovieSearch(query) {
 
 ---
 
-# Error Boundaries
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/267/full/EGH_ReduxStateADT_Final.png" />
+  <Title.Text>Error Boundaries</Title.Text>
+</Title>
 
 ---
 
@@ -946,7 +973,14 @@ export default class Catch extends Component {
 
 ---
 
-# Limite des Boundaries
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/267/full/EGH_ReduxStateADT_Final.png" />
+  <Title.Text>
+    Error Boundaries
+    <br />
+    The Limits
+  </Title.Text>
+</Title>
 
 ---
 
@@ -1021,7 +1055,10 @@ function Example() {
 
 ---
 
-# Render props
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/166/square_480/EGH_ReactAdvPatterns2_Final.png" />
+  <Title.Text>Render props</Title.Text>
+</Title>
 
 ---
 
@@ -1103,7 +1140,10 @@ function Example() {
 
 ---
 
-# Gestion du state avancée
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/114/square_480/EGH_ReactRecompose_Final.png" />
+  <Title.Text>Advanced State Management</Title.Text>
+</Title>
 
 ---
 
@@ -1182,7 +1222,10 @@ function Example() {
 
 ---
 
-# Créer des composants scalable
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/209/square_480/React_Dnd_Final.png" />
+  <Title.Text>Scalable Components</Title.Text>
+</Title>
 
 ---
 
@@ -1386,7 +1429,7 @@ function Card({ title, titleBackgroundColor, ad, text }) {
 
 ---
 
-# Et si on avait fait autrement ?
+# Et si on avait fait autrement ? 🤔
 
 ---
 
@@ -1398,7 +1441,7 @@ Card.Header = styled.div``
 
 ---
 
-# Les choses auraient été bien différentes...
+# Les choses auraient été bien différentes... 😌
 
 ---
 
@@ -1486,13 +1529,16 @@ Card.Header = styled.div``
 
 ---
 
-# Contexte
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/262/full/EGH_ReactContext_Final.png" />
+  <Title.Text>Context</Title.Text>
+</Title>
 
 ---
 
-## A quoi sert le contexte ?
+## Le contexte c'est quoi ?
 
-- Faire communiquer deux composants distant
+<img src="https://cdn-images-1.medium.com/max/1600/0*u0M1gjQG7Lxa2uww" />
 
 ---
 
@@ -1527,8 +1573,8 @@ function App() {
 
 - Le `Provider` subit un mount/update
 - La valeur injectée est-elle différente ?
-  - Oui -> les `Consumer` sont re-rendus
-  - Non -> rien ne se passe
+  - Oui → les `Consumer` sont re-rendus
+  - Non → rien ne se passe
 
 ---
 
@@ -1605,7 +1651,7 @@ function ThemeSwitcher() {
 
 ---
 
-## Qu'est-ce que Redux ?
+## C'est déjà dans React !
 
 - `createContext`
 - `useReducer`
@@ -1662,11 +1708,14 @@ function RegisterButton() {
 
 ---
 
-# Exercice 9 - I18N
+<Exercise num={9} title="Internationalization" />
 
 ---
 
-# Interaction avec le DOM
+<Title>
+  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/058/square_480/EGH_Mobx_Final.png" />
+  <Title.Text>Interaction avec le DOM</Title.Text>
+</Title>
 
 ---
 
@@ -1729,7 +1778,7 @@ function Example() {
 
 ---
 
-# Exercice 10 - Autofocus
+<Exercise num={10} title="Autofocus" />
 
 ---
 
@@ -1756,24 +1805,11 @@ function Example() {
 
 ## C'était pareil avant
 
-```js
-function Example() {
-  const [count, setCount] = useState(0)
-
-  function handleAlertClick() {
-    setTimeout(() => alert('You clicked on: ' + count), 3000)
-  }
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-      <button onClick={handleAlertClick}>Show alert</button>
-    </div>
-  )
-}
-```
-
-[CodeSandbox](https://codesandbox.io/s/w2wxl3yo0l)
+<iframe
+  src="https://codesandbox.io/embed/w2wxl3yo0l?fontsize=14"
+  style={{ width: '100%', height: 500, border: 0, overflow: 'hidden' }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 ---
 
@@ -1837,10 +1873,12 @@ ref.current // Access ref value using `ref.current`
 
 ---
 
-# Exercice 11 - Raccourcis clavier
+<Exercise num={11} title="Keyboard Shortcuts" />
 
 ---
 
-# Exercice 12 - Debounce
+# Thanks!
 
----
+> ❤️ J'ai aimé, [je poste une avis !](https://www.google.fr/maps/place/Smooth+Code/@48.8657415,2.3519553,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e1a846e6f39:0x3140a381af8bfb56!8m2!3d48.865738!4d2.354144?hl=en)
+
+> 🙄 Je j'ai pas aimé, je ne fais rien !
