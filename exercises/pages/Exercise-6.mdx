@@ -7,7 +7,9 @@ order: 6
 
 ## Instructions
 
-L'application gère les erreurs, mais pas de manière fine. Le comportement souhaité serait que l'erreur soit affichée à la place de la liste de film, de cette manière l'utilisateur pourrait continuer à taper dans le champs de recherche.
+L'application gère les erreurs, mais pas de manière fine. Le comportement souhaité serait que l'erreur soit affichée à la place de la liste de film et non sur toute l'application.
+
+La stratégie adopter est donc d'isoler la liste de films et le fetching des données dans un composant afin de pouvoir l'englober dans un `Catch`.
 
 - Créer un composant "render props" dans `MovieSearch` dans `src/containers/MovieDb.js`
 - Intégrer ce composant dans `App` et ajouter un `Catch` autour
@@ -16,11 +18,21 @@ L'application gère les erreurs, mais pas de manière fine. Le comportement souh
 
 Lorsque le champs de recherche est vide, j'obtiens une erreur à la place de la liste de films.
 
-<img src="/public/ex-6.png" width="100%" alt="Résultat" />
+<iframe
+  src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-6/?fontsize=14&view=preview"
+  style={{
+    width: '100%',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 ## Aide
 
-### Render props component
+### Render props : implémentation
 
 ```js
 export function Counter({ initialValue, children }) {
@@ -29,7 +41,7 @@ export function Counter({ initialValue, children }) {
 }
 ```
 
-### Utilisation d'un render props component
+### Render props : utilisation
 
 ```js
 function Example() {

@@ -1,29 +1,39 @@
 ---
-name: Ex. 5 - Gestion des erreurs
+name: Ex. 5 - Error Handling
 order: 5
 ---
 
-# Ex. 5 - Gestion des erreurs
+# Ex. 5 - Error Handling
 
 ## Instructions
 
 Actuellement notre application ne gère pas les cas d'erreur. Lorsque l'on utilise une API externe, on ne la maîtrise pas et il faut toujours s'attendre à avoir des erreurs.
 
-Nous allons utiliser les [Error Boundaries](https://reactjs.org/docs/error-boundaries.html), avec cette technique, nous serons à la fois tolérant aux erreurs issuent de l'API mais aussi à celles issues de notre propre code !
+Nous allons utiliser les [Error Boundaries](https://reactjs.org/docs/error-boundaries.html), avec cette technique, nous serons à la fois tolérants aux erreurs issues de l'API mais aussi à celles issues de notre propre code.
 
 - Créer une `ErrorBoundary` simple dans `src/components/Catch.js`
 - Englober toute l'application avec le composant `Catch` dans `index.js`
-- Modifier le hook custom `useMovieSearch` pour emettre une erreur lorsque la requète échoue
+- Modifier le Hook custom `useMovieSearch` pour emettre une erreur lorsque la requête échoue
 
 ### Résultat attendu
 
-Lorsque le champs de recherche est vide, j'obtiens une erreur.
+Lorsque le champs de recherche est vide, j'ai un message d'erreur.
 
-<img src="/public/ex-5.png" width="100%" alt="Résultat" />
+<iframe
+  src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-5/?fontsize=14&view=preview"
+  style={{
+    width: '100%',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 ## Aide
 
-### Error Boundary
+### Error Boundary : implémentation
 
 ```js
 import React, { Component } from 'react'
@@ -47,7 +57,7 @@ export default class Catch extends Component {
 }
 ```
 
-### Utilisation de l'Error Boundary
+### Error Boundary : utilisation
 
 ```js
 ReactDOM.render(

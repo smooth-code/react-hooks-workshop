@@ -1,9 +1,9 @@
 ---
-name: Ex. 9 - I18N
+name: Ex. 9 - Internationalization
 order: 9
 ---
 
-# Ex. 9 - I18N
+# Ex. 9 - Internationalization
 
 ## Instructions
 
@@ -23,32 +23,47 @@ Nous souhaitons maintenant traduire notre application et donner la possibilité 
 
 Un bouton s'affiche me permettant de changer la langue de l'application.
 
-<img src="/public/ex-9.png" width="100%" alt="Résultat" />
+<iframe
+  src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-9/?fontsize=14&view=preview"
+  style={{
+    width: '100%',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 ## Aide
 
-### I18n
+### I18n.js
 
 ```js
 // I18n.js
 import React, { createContext, useState, useContext, useMemo } from 'react'
 
+// Contexte I18n, il n'est pas directement exposé
 const I18nContext = createContext()
 
+// Provider permettant l'injection du contexte
 export function I18nProvider({ translations, defaultLocale, children }) {
   // TODO: à l'aide de "useState", créer la valeur injectée dans le contexte.
   // Elle contiendra : `translations`, `locale` et `setLocale`.
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }
 
+// Hook permettant de récupérer une clef
 export function useT(id) {
   // TODO: à l'aide de "useContext", récupérer la traduction correspondante à "id"
 }
 
+// Composant permettant de récupérer une clef
 export function T({ id }) {
   return useT(id)
 }
 
+// Hook permettant de récupérer le contexte i18n
 export function useI18n() {
   return useContext(I18nContext)
 }

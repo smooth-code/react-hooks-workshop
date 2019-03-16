@@ -9,26 +9,41 @@ order: 2
 
 Dans un premier temps, nous allons nous concentrer sur le champs de recherche, un simple `input` contrôlé, nous afficherons la recherche tapée par l'utilisateur.
 
-Nous utiliserons [Smooth UI](https://smooth-ui.smooth-code.com/docs-components-input) afin d'avoir un `input` avec un joli style.
+Nous utiliserons [Smooth UI](https://smooth-ui.smooth-code.com/docs-components-input), une librairie d'UI moderne et simple. Cela nous permettra d'avoir un site agréable à regarder sans avoir à écrire beaucoup de CSS.
+
+Smooth UI utilise [styled-components](https://www.styled-components.com/), la solution la plus populairer pour faire du CSS in JS en React.
 
 - Installer `styled-components @smooth-ui/core-sc`
-- Créer un dossier `src/components`
-- Créer un composant `input` contrôle dans `src/components/SearchInput.js`
+- Créer un composant `input` contrôlé dans `src/components/SearchInput.js`
 - Placer le composant `SearchInput` dans `App` et afficher sa valeur à l'aide de `useState`
-- Supprimer les fichiers inutilisés, `App.css`, `logo.svg`, `App.test.js`
+- Supprimer les fichiers inutilisés : `App.css`, `logo.svg` et `App.test.js`
 
 ### Résultat attendu
 
 Un champs de recherche simple, avec la recherche qui reflète ce qu'a tapé l'utilisateur.
 
-<img src="/public/ex-2.png" width="100%" alt="Résultat" />
+<iframe
+  src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-2/?fontsize=14&view=preview"
+  style={{
+    width: '100%',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 ## Aide
+
+### Installation d'un package npm
 
 ```bash
 # Installation de packages depuis npm
 npm i styled-components @smooth-ui/core-sc
 ```
+
+### SearchInput.js
 
 ```js
 // SearchInput.js
@@ -46,6 +61,8 @@ export default function SearchInput(props) {
   )
 }
 ```
+
+### App.js
 
 ```js
 // App.js
@@ -75,8 +92,9 @@ export default function App() {
 }
 ```
 
+### Récupération de la valeur d'un input
+
 ```js
-// Récupérer la valeur d'un input
 <input
   onChange={event => {
     // Un event est passé en paramètre, "target" désigne l'élément DOM "input"

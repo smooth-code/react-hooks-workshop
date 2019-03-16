@@ -1,13 +1,13 @@
 ---
-name: Ex. 7 - Gestion du state
+name: Ex. 7 - Advanced State
 order: 7
 ---
 
-# Ex. 7 - Gestion du state
+# Ex. 7 - Advanced State
 
 ## Instructions
 
-Nous allons refactorer notre composant `useMovieSearch` avec `useReducer` afin de le render plus clair et testable.
+Nous allons refactorer notre composant `useMovieSearch` avec `useReducer` afin de le rendre plus clair et testable.
 
 - Utiliser `useReducer` dans `useMovieSearch`
 - Faire en sorte de retourner un tableau vide lorsque la query est une chaîne vide
@@ -16,11 +16,21 @@ Nous allons refactorer notre composant `useMovieSearch` avec `useReducer` afin d
 
 Lorsque le champs de recherche est vide, j'obtiens une liste vide.
 
-<img src="/public/ex-7.png" width="100%" alt="Résultat" />
+<iframe
+  src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-7/?fontsize=14&view=preview"
+  style={{
+    width: '100%',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
 
 ## Aide
 
-### Exemple de `useReducer`
+### Counter avec `useReducer`
 
 ```js
 import React, { useReducer } from 'react'

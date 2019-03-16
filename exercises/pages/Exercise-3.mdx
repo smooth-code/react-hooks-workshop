@@ -7,14 +7,32 @@ order: 3
 
 ## Instructions
 
-Nous allons désormais récupérer les données depuis l'[API de TheMovieDB](https://developers.themoviedb.org/3). Une clef d'API a déjà été créée, nous pourrons donc nous concentre sur la partie applicative.
+Nous allons désormais récupérer les données depuis l'[API de TheMovieDB](https://developers.themoviedb.org/3). Une clef d'API a déjà été créée, nous pourrons donc nous concentrer sur la partie applicative.
 
 Pour fetcher les données, nous utiliserons la librairie [axios](https://github.com/axios/axios), cela permet de faire des requêtes HTTP de façon simple et d'assurer une compatibilité sur tous les navigateurs.
 
 - Installer `axios`
 - A l'aide de `useEffect`, `useState` et `axios` récupérer les données depuis l'API
 
-**Utilisation de l'API**
+### Résultat attendu
+
+Lorsque l'utilisateur tape dans le champs de recherche, la liste de films correspondants s'affiche.
+
+<iframe
+  src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-3/?fontsize=14&view=preview"
+  style={{
+    width: '100%',
+    height: 500,
+    border: 0,
+    borderRadius: 4,
+    overflow: 'hidden',
+  }}
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+/>
+
+## Aide
+
+### Utilisation de l'API avec axios
 
 ```js
 axios
@@ -29,13 +47,7 @@ axios
   })
 ```
 
-### Résultat attendu
-
-Lorsque l'utilisateur tape dans le champs de recherche, la liste de films correspondants s'affiche.
-
-<img src="/public/ex-3.png" width="100%" alt="Résultat" />
-
-## Aide
+### App.js
 
 ```js
 // App.js
