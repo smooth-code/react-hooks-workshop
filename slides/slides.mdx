@@ -435,7 +435,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-## Example
+## Compteur
 
 ```js
 import React, { useState } from 'react'
@@ -454,7 +454,7 @@ function Example() {
 
 ---
 
-## Equivalent
+## Équivalent
 
 ```js
 class Example extends React.Component {
@@ -636,7 +636,7 @@ function ControlledInput({ defaultValue, ...props }) {
 
 ---
 
-# Exercice 2 - Create Search Field
+<Exercise num={2} title="Search Field" />
 
 ---
 
@@ -644,19 +644,21 @@ function ControlledInput({ defaultValue, ...props }) {
 
 ---
 
-# Qu'est-ce qu'un effect ?
+# Qu'est-ce qu'un effet ✨ ?
 
 ---
 
-## Une fonction
-
-## Un effet de bord
-
-## Déclenché au rendu du composant
+<dl>
+  <dt>Effet</dt>
+  <dd>
+    <em>\e.fɛ\</em> • Effet de bord sous forme de fonction déclenché après le
+    rendu du composant.
+  </dd>
+</dl>
 
 ---
 
-## Exemple
+## Page Title
 
 ```js
 import React, { useState, useEffect } from 'react'
@@ -714,7 +716,7 @@ class Example extends React.Component {
 
 ---
 
-## Penser en effet
+## Penser "effect"
 
 - Quel est l’effet de bord ?
 - Comment dois-je le nettoyer ?
@@ -731,6 +733,7 @@ function ClickSpy() {
       alert('clicked')
     }
     document.addEventListener('click', handleClick)
+    // La fonction retournée par l'effet est le "clean"
     return () => {
       document.removeEventListener('click', handleClick)
     }
@@ -754,7 +757,7 @@ function ClickSpy() {
 
 ---
 
-## Separation of concern
+## Séparation des responsabilités
 
 ```js
 useEffect(() => {
@@ -765,7 +768,7 @@ useEffect(() => {
 })
 ```
 
-> Un effet ➡ une responsabilité
+> 👉 Un effet → Une responsabilité
 
 ---
 
@@ -775,16 +778,16 @@ useEffect(() => {
 function PageTitle({ title }) {
   useEffect(() => {
     document.title = title
-  }, [title]) // this effect will run only if "title" changes
+  }, [title]) // Cet effet sera déclenché que si "title" change
   return null
 }
 ```
 
-> Les dépendances permettent d'éviter de lancer l'effet inutilement
+> 👉 Les dépendances sont les variables externes utilisées dans l'effet
 
 ---
 
-## Et seulement au montage ?
+## Montage uniquement
 
 ```js
 function MountSpy() {
@@ -795,23 +798,11 @@ function MountSpy() {
 }
 ```
 
-> Pas de dépendances, seulement au montage donc !
+> 👉 Pas de dépendances, donc uniquement au montage !
 
 ---
 
-## Lifecycle
-
-- Mount
-  - Run effect
-- ~~Update~~
-  - ~~Clean effect~~
-  - ~~Run effect~~
-- Unmount
-  - Clean effect
-
----
-
-# Exercice 3 - Fetch Data
+<Exercise num={3} title="Data Fetching" />
 
 ---
 
