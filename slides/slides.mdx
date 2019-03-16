@@ -1,4 +1,7 @@
-export { default as themes } from './themes'
+export { default as theme } from './theme'
+import GridLayout from './components/GridLayout'
+import Iframe from './components/Iframe'
+import Exercise from './components/Exercise'
 import { Appear } from 'mdx-deck'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -16,9 +19,9 @@ import {
 import { Timeline, TimelineEvent } from './components/Timeline'
 
 <img
-  src="https://res.cloudinary.com/smooth/image/upload/v1552399812/logos/smooth-academy.svg"
+  src="https://res.cloudinary.com/smooth/image/upload/w_300,dpr_2/v1552399812/logos/smooth-academy.svg"
   alt="Smooth Academy"
-  width="30%"
+  style={{ width: '50%' }}
 />
 
 <h1>React Advanced<br />Workshop</h1>
@@ -110,11 +113,7 @@ Co-fondateur de Smooth Code
 
 ## React vs Vue vs Angular
 
-<iframe
-  style={{ width: '80vw', height: '70vh', overflow: 'hidden' }}
-  frameborder="0"
-  src="https://npmcharts.com/compare/react,@angular/core,vue?minimal=true&interval=7"
-/>
+<Iframe src="https://npmcharts.com/compare/react,@angular/core,vue?minimal=true&interval=7" />
 
 ---
 
@@ -188,6 +187,135 @@ Co-fondateur de Smooth Code
 
 ---
 
+# Primitives React
+
+---
+
+## JSX
+
+```js
+<div className="foo" />
+```
+
+> 👉 Extension au langage JavaScript
+
+---
+
+## Element
+
+```js
+const element = <div />
+```
+
+> 👉 Une instance de composant React
+
+---
+
+## Composant
+
+```js
+function Div(props) {
+  return <div />
+}
+```
+
+`props => element`
+
+> 👉 Majuscule obligatoire !
+
+---
+
+## Qu'est-ce qu'une fonction ?
+
+<img
+  style={{ maxHeight: '80vh', width: '80%' }}
+  src="https://pbs.twimg.com/media/D1j5S_wWsAc3lPB.jpg:large"
+/>
+
+---
+
+export default GridLayout
+
+## Syntaxe des fonctions
+
+```js
+// Named function
+function fn(props) {
+  return props.foo
+}
+```
+
+```js
+// Named function + destructuring
+function fn({ foo }) {
+  return foo
+}
+```
+
+```js
+// Arrow function
+const fn = props => {
+  return props.foo
+}
+```
+
+```js
+// Arrow function + destructuring
+const fn = ({ foo }) => {
+  return foo
+}
+```
+
+```js
+// Short Arrow function + destructuring
+const fn = props => props.foo
+```
+
+```js
+// Short Arrow function + destructuring
+const fn = ({ foo }) => foo
+```
+
+---
+
+# Lifecycle React
+
+---
+
+## Phases
+
+- Mount
+- Update
+- Unmount
+
+---
+
+## Mount
+
+- Le composant est ajouté dans l'arbre React
+
+---
+
+## Update
+
+- Le composant est mis à jour
+- Déclenché par au-dessus (les props)
+- Ou par lui-même (le state)
+
+---
+
+## Unmount
+
+- Le composant est retiré de l'arbre React
+
+---
+
+## Diagramme interactif
+
+<Iframe src="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" />
+
+---
+
 # Démarrer avec React
 
 ---
@@ -220,7 +348,7 @@ Co-fondateur de Smooth Code
 
 ---
 
-# Exercice 1 - create-react-app
+<Exercise num={1} title="Create React App" />
 
 ---
 
@@ -244,7 +372,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ## No breaking change !
 
-- Les classes restent supportés
+- Les classes restent supportées
 - Tout est 100% rétrocompatible
 - Pas imposé, mais recommandé 😏
 
@@ -260,16 +388,22 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ## Conseils
 
-- Migrer son code progressivement
-- Ne pas se forcer à les utiliser
+- Migrer son code progressivement 🤗
+- Ne pas se forcer à les utiliser 🤯
 
 ---
 
-# Qu'est-ce qu’un Hook ?
+# Qu'est-ce qu’un Hook 🎣 ?
 
 ---
 
-> Un Hook React est une fonction qui commence par "use" et qui peut être utilisée à l'intérieur d'un composant fonctionnel React.
+<dl>
+  <dt>React Hook</dt>
+  <dd>
+    <em>/ɹiːˈækt/ /hʊk/</em> • Fonction spéciale permettant de se brancher sur
+    des features React à l'intérieur d'un composant.
+  </dd>
+</dl>
 
 ---
 
@@ -376,7 +510,7 @@ function Example(props) {
 }
 ```
 
-> Préférez les fonctions
+> 👉 Préférez les fonctions
 
 ---
 
@@ -401,7 +535,7 @@ function ExampleWithManyStates() {
 }
 ```
 
-> Ne pas hésiter à décomposer les states
+> 👉 Ne pas hésiter à décomposer les states
 
 ---
 
@@ -444,11 +578,11 @@ setCount(10)
 setCount(previousCount => previousCount + 1)
 ```
 
-> Toujours utiliser une fonction si on part du state précédent
+> 👉 Toujours utiliser une fonction si on part du state précédent
 
 ---
 
-# Controlled VS Uncontrolled
+<h1>Controlled 👮‍♂️ <br />or uncontrolled 🤪</h1>
 
 ---
 
@@ -492,11 +626,13 @@ function ControlledInput({ defaultValue, ...props }) {
 }
 ```
 
-> Il est possible de créer un composant non-contrôlé à partir d'un composant contrôlé.
+> 👉 Il est possible de créer un composant non-contrôlé à partir d'un composant contrôlé, mais pas l'inverse.
 
 ---
 
-> Toujours privilégier les composants contrôlés.
+## Conclusion
+
+> 👉 Toujours privilégier les composants contrôlés 👮‍♂️
 
 ---
 
