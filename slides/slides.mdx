@@ -1,10 +1,11 @@
+import { cloneElement } from 'react'
 import { Grid, Row, Col } from '@smooth-ui/core-em'
 export { default as theme } from './theme'
 import GridLayout from './components/GridLayout'
 import Iframe from './components/Iframe'
 import Exercise from './components/Exercise'
 import Title from './components/Title'
-import { Appear, Head } from 'mdx-deck'
+import StepShow from './components/StepShow'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faGithub,
@@ -18,17 +19,27 @@ import {
   faCubes,
   faFish,
 } from '@fortawesome/free-solid-svg-icons'
-import { Timeline, TimelineEvent } from './components/Timeline'
-
-<Head>
-  <title>React Hooks Workshop</title>
-  <meta name="twitter:site" content="@neoziro" />
-  <meta name="twitter:title" content="React Hooks Workshop" />
-  <meta
-    name="twitter:description"
-    content="React Hooks Workshop by Greg Bergé"
-  />
-</Head>
+import Timeline from './components/Timeline'
+import ImageGallery from './images/egghead/ImageGallery.png'
+import ManageReactForm from './images/egghead/ManageReactForm.png'
+import Mobx from './images/egghead/Mobx.png'
+import OptimisticReact from './images/egghead/OptimisticReact.png'
+import ReactAdvPatterns from './images/egghead/ReactAdvPatterns.png'
+import ReactBeginners from './images/egghead/ReactBeginners.png'
+import ReactContext from './images/egghead/ReactContext.png'
+import ReactCook from './images/egghead/ReactCook.png'
+import ReactDndFinal from './images/egghead/ReactDndFinal.png'
+import ReactHooks from './images/egghead/ReactHooks.png'
+import ReactMobileNav from './images/egghead/ReactMobileNav.png'
+import ReactRecompose from './images/egghead/ReactRecompose.png'
+import ReactStart from './images/egghead/ReactStart.png'
+import ReactStorybook from './images/egghead/ReactStorybook.png'
+import Redux from './images/egghead/Redux.png'
+import ReduxStateADT from './images/egghead/ReduxStateADT.png'
+import SimplifyHooks from './images/egghead/SimplifyHooks.png'
+import TestReactJest from './images/egghead/TestReactJest.png'
+import funcExplain from './images/func-explain.jpg'
+import contextPic from './images/context.png'
 
 <img
   src="https://res.cloudinary.com/smooth/image/upload/w_300,dpr_2/v1552399812/logos/smooth-academy.svg"
@@ -101,7 +112,7 @@ Co-fondateur de Smooth Code
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/160/square_480/EGH_ReactBeginners.png" />
+  <Title.Picture src={ReactBeginners} />
   <Title.Text>State of React</Title.Text>
 </Title>
 
@@ -110,51 +121,45 @@ Co-fondateur de Smooth Code
 ## Historique
 
 <Timeline>
-  <Appear>
-    <TimelineEvent
-      title="Jordan Walke crée React (Reason)"
-      createdAt="2010"
-      icon={
-        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faLightbulb} />
-      }
-    />
-    <TimelineEvent
-      title="Feed Facebook avec React"
-      createdAt="2011"
-      iconColor="#3C5A99"
-      icon={
-        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faFacebook} />
-      }
-    />
-    <TimelineEvent
-      title="Instagram web en React"
-      createdAt="2012"
-      iconColor="#E1306C"
-      icon={
-        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faInstagram} />
-      }
-    />
-    <TimelineEvent
-      title="React Native Open Source"
-      createdAt="2015"
-      iconColor="#005068"
-      icon={
-        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faMobileAlt} />
-      }
-    />
-    <TimelineEvent
-      title="React Fiber"
-      createdAt="2017"
-      icon={
-        <FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faCubes} />
-      }
-    />
-    <TimelineEvent
-      title="React Hooks"
-      createdAt="2019"
-      icon={<FontAwesomeIcon style={{ width: 20, height: 20 }} icon={faFish} />}
-    />
-  </Appear>
+  <StepShow
+    renderHidden={child => cloneElement(child, { style: { opacity: 0 } })}
+  >
+    <Timeline.Event>
+      <Timeline.Icon>
+        <FontAwesomeIcon icon={faLightbulb} />
+      </Timeline.Icon>
+      <Timeline.Date>2010</Timeline.Date>
+      <Timeline.Title>Jordan Walke crée React (Reason)</Timeline.Title>
+    </Timeline.Event>
+    <Timeline.Event>
+      <Timeline.Icon>
+        <FontAwesomeIcon icon={faInstagram} />
+      </Timeline.Icon>
+      <Timeline.Date>2012</Timeline.Date>
+      <Timeline.Title>Instagram web en React</Timeline.Title>
+    </Timeline.Event>
+    <Timeline.Event>
+      <Timeline.Icon>
+        <FontAwesomeIcon icon={faMobileAlt} />
+      </Timeline.Icon>
+      <Timeline.Date>2015</Timeline.Date>
+      <Timeline.Title>React Native Open Source</Timeline.Title>
+    </Timeline.Event>
+    <Timeline.Event>
+      <Timeline.Icon>
+        <FontAwesomeIcon icon={faCubes} />
+      </Timeline.Icon>
+      <Timeline.Date>2017</Timeline.Date>
+      <Timeline.Title>React Fiber</Timeline.Title>
+    </Timeline.Event>
+    <Timeline.Event>
+      <Timeline.Icon>
+        <FontAwesomeIcon icon={faFish} />
+      </Timeline.Icon>
+      <Timeline.Date>2019</Timeline.Date>
+      <Timeline.Title>React Hooks</Timeline.Title>
+    </Timeline.Event>
+  </StepShow>
 </Timeline>
 
 ---
@@ -176,7 +181,7 @@ Co-fondateur de Smooth Code
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/228/full/EGH_ReactStorybook_Final.png" />
+  <Title.Picture src={ReactStorybook} />
   <Title.Text>Terms</Title.Text>
 </Title>
 
@@ -241,7 +246,7 @@ Co-fondateur de Smooth Code
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/027/square_480/course_image.png" />
+  <Title.Picture src={ReactCook} />
   <Title.Text>Primitives</Title.Text>
 </Title>
 
@@ -283,10 +288,7 @@ function Div(props) {
 
 ## Qu'est-ce qu'une fonction ?
 
-<img
-  style={{ maxHeight: '80vh', width: '80%' }}
-  src="https://pbs.twimg.com/media/D1j5S_wWsAc3lPB.jpg:large"
-/>
+<img style={{ maxHeight: '80vh', width: '80%' }} src={funcExplain} />
 
 ---
 
@@ -345,7 +347,7 @@ const fn = ({ foo }) => foo
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/085/square_480/EGH_ImageGallery_Final.png" />
+  <Title.Picture src={ImageGallery} />
   <Title.Text>Lifecycle</Title.Text>
 </Title>
 
@@ -394,7 +396,7 @@ const fn = ({ foo }) => foo
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/014/square_480/course_image.png" />
+  <Title.Picture src={ReactStart} />
   <Title.Text>Start with React</Title.Text>
 </Title>
 
@@ -439,7 +441,7 @@ const fn = ({ foo }) => foo
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/263/square_480/EGH_SimplifyHooks_Final.png" />
+  <Title.Picture src={SimplifyHooks} />
   <Title.Text>Hooks</Title.Text>
 </Title>
 
@@ -516,7 +518,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/194/square_480/EGH_ReactMobileNav_Final.png" />
+  <Title.Picture src={ReactMobileNav} />
   <Title.Text>Rules of Hooks</Title.Text>
 </Title>
 
@@ -551,7 +553,7 @@ function Example(props) {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/114/square_480/EGH_ReactRecompose_Final.png" />
+  <Title.Picture src={ReactRecompose} />
   <Title.Text>State Management</Title.Text>
 </Title>
 
@@ -666,7 +668,7 @@ setCount(previousCount => previousCount + 1)
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/197/square_480/Manage_React_Form.png" />
+  <Title.Picture src={ManageReactForm} />
   <Title.Text>Controlled Components</Title.Text>
 </Title>
 
@@ -727,7 +729,7 @@ function ControlledInput({ defaultValue, ...props }) {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/193/square_480/EGH_OptimisticReact_Final.png" />
+  <Title.Picture src={OptimisticReact} />
   <Title.Text>Effects</Title.Text>
 </Title>
 
@@ -896,7 +898,7 @@ function MountSpy() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/264/square_480/EGH_ReactHooks_Final_%281%29.png" />
+  <Title.Picture src={ReactHooks} />
   <Title.Text>Custom Hooks</Title.Text>
 </Title>
 
@@ -966,7 +968,7 @@ function useMovieSearch(query) {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/267/full/EGH_ReduxStateADT_Final.png" />
+  <Title.Picture src={ReduxStateADT} />
   <Title.Text>Error Boundaries</Title.Text>
 </Title>
 
@@ -1022,7 +1024,7 @@ export default class Catch extends Component {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/267/full/EGH_ReduxStateADT_Final.png" />
+  <Title.Picture src={ReduxStateADT} />
   <Title.Text>Limit of Boundaries</Title.Text>
 </Title>
 
@@ -1100,7 +1102,7 @@ function Example() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/166/square_480/EGH_ReactAdvPatterns2_Final.png" />
+  <Title.Picture src={ReactAdvPatterns} />
   <Title.Text>Render props</Title.Text>
 </Title>
 
@@ -1185,7 +1187,7 @@ function Example() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/114/square_480/EGH_ReactRecompose_Final.png" />
+  <Title.Picture src={ReactRecompose} />
   <Title.Text>Advanced State Management</Title.Text>
 </Title>
 
@@ -1267,7 +1269,7 @@ function Example() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/209/square_480/React_Dnd_Final.png" />
+  <Title.Picture src={ReactDndFinal} />
   <Title.Text>Scalable Components</Title.Text>
 </Title>
 
@@ -1574,7 +1576,7 @@ Card.Header = styled.div``
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/262/full/EGH_ReactContext_Final.png" />
+  <Title.Picture src={ReactContext} />
   <Title.Text>Context</Title.Text>
 </Title>
 
@@ -1582,7 +1584,7 @@ Card.Header = styled.div``
 
 ## Le contexte c'est quoi ?
 
-<img src="https://cdn-images-1.medium.com/max/1600/0*u0M1gjQG7Lxa2uww" />
+<img src={contextPic} />
 
 ---
 
@@ -1684,7 +1686,7 @@ function ThemeSwitcher() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/025/square_480/EGH_Redux-New.png" />
+  <Title.Picture src={Redux} />
   <Title.Text>Avoid Redux</Title.Text>
 </Title>
 
@@ -1760,7 +1762,7 @@ function RegisterButton() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/058/square_480/EGH_Mobx_Final.png" />
+  <Title.Picture src={Mobx} />
   <Title.Text>DOM Interactions</Title.Text>
 </Title>
 
@@ -1830,7 +1832,7 @@ function Example() {
 ---
 
 <Title>
-  <Title.Picture src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/198/square_480/EGH_TestReactJest-edited.png" />
+  <Title.Picture src={TestReactJest} />
   <Title.Text>Effects in depth</Title.Text>
 </Title>
 

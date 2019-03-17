@@ -26,7 +26,7 @@ const styles = {
     display: block;
     margin: 0 auto;
     width: 90vw;
-    max-width: 300px;
+    max-width: 380px;
   `,
 }
 

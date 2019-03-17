@@ -1,6 +1,25 @@
+import React from 'react'
 import base, { syntaxHighlighterPrism } from '@mdx-deck/themes'
+import { Head } from 'mdx-deck'
 import { css } from '@emotion/core'
 import prismStyle from 'react-syntax-highlighter/dist/styles/prism/solarizedlight'
+
+function Provider({ children }) {
+  return (
+    <>
+      <Head>
+        <title>React Hooks Workshop</title>
+        <meta name="twitter:site" content="@neoziro" />
+        <meta name="twitter:title" content="React Hooks Workshop" />
+        <meta
+          name="twitter:description"
+          content="React Hooks Workshop by Greg Bergé"
+        />
+      </Head>
+      {children}
+    </>
+  )
+}
 
 export default syntaxHighlighterPrism({
   css: [
@@ -75,4 +94,5 @@ export default syntaxHighlighterPrism({
   prism: {
     style: prismStyle,
   },
+  Provider,
 })
