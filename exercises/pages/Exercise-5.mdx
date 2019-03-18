@@ -80,9 +80,9 @@ function useApi() {
   useEffect(() => {
     request()
       // Lorsque tout se passe bien, j'obtiens un résultat
-      .then(result => setResult({ result, error: null }))
+      .then(result => setState({ result, error: null }))
       // En cas d'erreur, le catch est appelé
-      .catch(error => setError({ error, result: null }))
+      .catch(error => setState({ error, result: null }))
   })
 
   // Si une erreur a été retournée par la requête, alors je throw
