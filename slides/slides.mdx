@@ -1788,7 +1788,7 @@ const FancyInput = React.forwardRef((props, ref) => (
 ))
 
 function Example() {
-  // `ref.current` sera la référence à l'élément DOM button
+  // `ref.current` sera la référence à l'élément DOM input
   const ref = useRef()
   return <FancyInput ref={ref} />
 }
@@ -1902,7 +1902,7 @@ function Example() {
   useEffect(() => {
     const interval = setInterval(() => console.log(countRef.current), 100)
     return () => clearInterval(interval)
-  }, [count])
+  }, [countRef])
   return <button onClick={() => setCount(count => count + 1)}>Increment</button>
 }
 ```
