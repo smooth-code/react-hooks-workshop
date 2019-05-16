@@ -7,14 +7,15 @@ order: 10
 
 ## Instructions
 
-Nous allons faire en sorte que le champs de recherche soit "focus" automatiquement. Nous pourrions utiliser l'[attribut autofocus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/autofocus) mais ce serait non contrôlé 😬.
+We will make sure that the search field is focused automatically.
+We could use the [autofocus attribute](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/autofocus) but it would be uncontrolled 😬.
 
-- Modifier `SearchInput` afin de supporter une `ref` et la fonction `ref.current.focus()`
-- A l'aide de `useRef` et `useEffect`, faire en sorte que le champs soit focus automatiquement dans `App`
+- Modify `SearchInput` to support `ref` and `ref.current.focus()`
+- Use `useRef` and `useEffect` to make the field automatically focused in `App`
 
-### Résultat attendu
+### Expected result
 
-Le champs est focus automatiquement au démarrage de l'application.
+The field is focus automatically when the application starts.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-10/?fontsize=14&view=preview"
@@ -28,9 +29,9 @@ Le champs est focus automatiquement au démarrage de l'application.
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Forward ref
+### How should I forward the reference?
 
 ```js
 import React, { forwardRef, useRef, useImperativeHandle } from 'react'
@@ -48,7 +49,7 @@ export default forwardRef(function MyInput(props, ref) {
 })
 ```
 
-### Utilisation d'une ref
+### How should I use a reference?
 
 ```js
 function Example() {

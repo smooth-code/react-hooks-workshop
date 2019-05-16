@@ -7,17 +7,17 @@ order: 11
 
 ## Instructions
 
-Nous souhaitons maintenant créer un Hook permettant de réagir à un raccourcis clavier. Grâce à ce hook nous pourrons faire un focus sur le champs de recherche quand l'utilisateur appuie sur les touches "ALT" et "F" simultanément.
+We now want to create a Hook to react to a keyboard shortcut. Thanks to this hook we will be able to focus on the search field when the user presses the "ALT" and "F" keys simultaneously.
 
-Pour réaliser un Hook aussi complexe, nous avons besoin de plusieurs choses :
+To make such a complex Hook, we need several things:
 
-- Réagir aux évènements "keydown" et "keyup" de `window`
-- Garder une trace des touches actives
-- Déclencher une fonction lorsque les touches actives sont celles spécifiées dans le raccourcis
+- Respond to "keydown" and "keyup" events of `window`
+- Keep track of active keys
+- Trigger a function when the active keys are those specified in the shortcut
 
-Nous allons donc décomposer le travail :
+So we will break down the work:
 
-### Un Hook `useEventListener`
+### A `useEventListener` hook
 
 ```js
 function Example() {
@@ -27,36 +27,36 @@ function Example() {
 }
 ```
 
-### Un Hook `useActiveKeys`
+### A `useActiveKeys` hook
 
 ```js
 function Example() {
   const activeKeys = useActiveKeys()
-  // Affiche les touches enfoncées par l'utilisateur
+  // Display the keys pressed by the user
   console.log(activeKeys)
 }
 ```
 
-### Une fonction `getShortcutKeys`
+### A `getShortcutKeys` function
 
 ```js
 const shortcutKeys = getShortcutKeys('alt+f')
 // [18, 70]
 ```
 
-### Le Hook `useShortcutEffect`
+### A `useShortcutEffect` hook
 
 ```js
 function Example() {
   useShortcutEffect('alt+f', () => {
-    // La réaction au raccourcis "ALT" + "F"
+    // The reaction to the shortcut "ALT" + "F"
   })
 }
 ```
 
-### Résultat attendu
+### Expected result
 
-Lorsque je presse les touches "ALT" et "F" simultanément, le champs de recherche est focus.
+When I press the "ALT" and "F" keys simultaneously, the search field is focus.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-11/?fontsize=14&view=preview"
@@ -70,9 +70,9 @@ Lorsque je presse les touches "ALT" et "F" simultanément, le champs de recherch
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Utilisation d'une fonction dans un `useEffect`
+### Using a function in a `useEffect`
 
 ```js
 function useMountEffect(effect) {

@@ -1,6 +1,6 @@
 export default {
-  title: 'React Hooks Workshop',
-  description: 'React Hooks Workshop by Greg Bergé',
+  title: 'React Advanced Workshop',
+  description: 'React Advanced Workshop for React Europe',
   repository: 'https://github.com/smooth-code/react-hooks-workshop',
   ordering: 'ascending',
   themeConfig: {

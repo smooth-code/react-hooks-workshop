@@ -7,21 +7,21 @@ order: 9
 
 ## Instructions
 
-Nous souhaitons maintenant traduire notre application et donner la possibilité à l'utilisateur de changer la langue en live.
+We now want to translate our application and give the user the opportunity to change the language live.
 
-- Créer un dossier `src/locales` avec deux fichiers `en.json` et `fr.json` (voir aide)
-- Créer un fichier `src/components/I18n.js` qui exposera :
+- Create a folder `src/locales` with two files `en.json` and `fr.json` (see help)
+- Create a `src/components/I18n.js` file that will expose:
   - `I18nProvider`
   - `useI18n`
   - `useT`
   - `T`
-- Ajouter `I18nProvider` dans `index.js`
-- Modifier `SearchInput` afin de récupérer le placeholder via `useT`
-- Modifier `App` et ajouter un bouton pour changer la langue et traduire le titre de l'application
+- Add `I18nProvider` in `index.js`
+- Modify `SearchInput` to get the placeholder via `useT`
+- Change `App` and add a button to change the language and translate the title of the application
 
-### Résultat attendu
+### Expected result
 
-Un bouton s'affiche me permettant de changer la langue de l'application.
+A button appears allowing me to change the language of the application.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-9/?fontsize=14&view=preview"
@@ -35,7 +35,7 @@ Un bouton s'affiche me permettant de changer la langue de l'application.
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
 ### I18n.js
 
@@ -43,22 +43,22 @@ Un bouton s'affiche me permettant de changer la langue de l'application.
 // I18n.js
 import React, { createContext, useState, useContext, useMemo } from 'react'
 
-// Contexte I18n, il n'est pas directement exposé
+// I18n context, it's private
 const I18nContext = createContext()
 
-// Provider permettant l'injection du contexte
+// A provider
 export function I18nProvider({ translations, defaultLocale, children }) {
-  // TODO: à l'aide de "useState", créer la valeur injectée dans le contexte.
-  // Elle contiendra : `translations`, `locale` et `setLocale`.
+  // TODO: with the help of "useState", create a value to inject in the context.
+  // The object will have the following keys: `translations`, `locale` and `setLocale`.
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }
 
-// Hook permettant de récupérer une clef
+// A collector
 export function useT(id) {
-  // TODO: à l'aide de "useContext", récupérer la traduction correspondante à "id"
+  // TODO: With the help of "useContext", collect the translations for the key "id"
 }
 
-// Composant permettant de récupérer une clef
+// A simple component to render a translation key
 export function T({ id }) {
   return useT(id)
 }
@@ -104,7 +104,7 @@ serviceWorker.unregister()
 
 ```json
 {
-  "fr": "🇫🇷 French",
+  "fr": "🇫🇷 Français",
   "en": "🇬🇧 English",
   "title": "Smooth Movies",
   "placeholder": "Type something..."
@@ -116,7 +116,7 @@ serviceWorker.unregister()
 ```json
 {
   "fr": "🇫🇷 Français",
-  "en": "🇬🇧 Anglais",
+  "en": "🇬🇧 English",
   "title": "Smooth Films",
   "placeholder": "Tapez quelque chose..."
 }

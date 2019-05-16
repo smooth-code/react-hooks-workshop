@@ -41,12 +41,6 @@ import TestReactJest from './images/egghead/TestReactJest.png'
 import funcExplain from './images/func-explain.jpg'
 import contextPic from './images/context.png'
 
-<img
-  src="https://res.cloudinary.com/smooth/image/upload/w_300,dpr_2/v1552399812/logos/smooth-academy.svg"
-  alt="Smooth Academy"
-  style={{ width: '50%' }}
-/>
-
 <h1>React Advanced<br />Workshop</h1>
 
 ---
@@ -67,14 +61,36 @@ Co-fondateur de Smooth Code
     <FontAwesomeIcon icon={faGithub} /> @neoziro
   </a>
   {' | '}
-  <a style={{ textDecoration: 'none' }} href="https://github.com/neoziro">
+  <a style={{ textDecoration: 'none' }} href="https://twitter.com/neoziro">
     <FontAwesomeIcon icon={faTwitter} /> @neoziro
   </a>
 </div>
 
 ---
 
-## Sommaire
+<img
+  src="https://pbs.twimg.com/profile_images/686301436804730881/zCRlzllB_400x400.jpg"
+  alt="Olivier Tassinari"
+  style={{ width: '50%', maxWidth: 300, borderRadius: '50%' }}
+/>
+
+### Olivier Tassinari
+
+Co-creator of Material-UI.
+
+<div>
+  <a style={{ textDecoration: 'none' }} href="https://github.com/oliviertassinari">
+    <FontAwesomeIcon icon={faGithub} /> @oliviertassinari
+  </a>
+  {' | '}
+  <a style={{ textDecoration: 'none' }} href="https://twitter.com/olivtassinari">
+    <FontAwesomeIcon icon={faTwitter} /> @olivtassinari
+  </a>
+</div>
+
+---
+
+## Summary
 
 <Grid fluid>
   <Row>
@@ -118,7 +134,7 @@ Co-fondateur de Smooth Code
 
 ---
 
-## Historique
+## History
 
 <Timeline>
   <StepShow
@@ -129,14 +145,14 @@ Co-fondateur de Smooth Code
         <FontAwesomeIcon icon={faLightbulb} />
       </Timeline.Icon>
       <Timeline.Date>2010</Timeline.Date>
-      <Timeline.Title>Jordan Walke crée React (Reason)</Timeline.Title>
+      <Timeline.Title>Jordan Walke creates React</Timeline.Title>
     </Timeline.Event>
     <Timeline.Event>
       <Timeline.Icon>
         <FontAwesomeIcon icon={faInstagram} />
       </Timeline.Icon>
       <Timeline.Date>2012</Timeline.Date>
-      <Timeline.Title>Instagram web en React</Timeline.Title>
+      <Timeline.Title>Instagram web in React</Timeline.Title>
     </Timeline.Event>
     <Timeline.Event>
       <Timeline.Icon>
@@ -157,7 +173,7 @@ Co-fondateur de Smooth Code
         <FontAwesomeIcon icon={faFish} />
       </Timeline.Icon>
       <Timeline.Date>2019</Timeline.Date>
-      <Timeline.Title>React Hooks</Timeline.Title>
+      <Timeline.Title>React Hooks, Facebook rewrite in Hooks</Timeline.Title>
     </Timeline.Event>
   </StepShow>
 </Timeline>
@@ -170,13 +186,13 @@ Co-fondateur de Smooth Code
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 React est incontournable
+> 👉 React is the leading solution
 
-> 👉 Vue est en croissance
+> 👉 Vue is growing but not faster than React
 
-> 👉 Angular est sur le déclin
+> 👉 Angular is still a valid solution
 
 ---
 
@@ -187,61 +203,61 @@ Co-fondateur de Smooth Code
 
 ---
 
-## Fiber ?
+## Fiber?
 
-- Réécriture du coeur de React (v16)
-- Permet la création de nouvelles features
+- Rewrote of the internal of React (v16)
+- Has allowed the introduction of new features
 - Hooks, Suspense, Concurrent Mode...
 
-> 👉 Aucun impact pour le développeur
+> 👉 Only internal changes, no breaking changes for you.
 
 ---
 
-## Hooks ?
+## Hooks?
 
-- Nouvelle API de création de composants
-- Sortie le 6 février 2019 (v16.8)
+- A new API for dynamic logic
+- Released 6 February 2019 in v16.8.0
 
-> 👉 Simplification du développement
-
----
-
-## Concurrent Mode ?
-
-- Rendu non bloquant
-- Permet d'optimiser les performances
-- Mode strict requis
-- Sortie à venir (Q2 2019)
-
-> 👉 Application plus fluide et performante
+> 👉 A mental model shift
 
 ---
 
-## Suspense ?
+## Concurrent Mode?
 
-- Solution pour gérer le data-fetching
-- Sortie à venir (mid 2019)
+- Introduce scheduling in the rendering
+- Improve the performance
+- Require no strict mode warnings
+- Should soon be released (Q2 2019)
 
-> 👉 Data-fetching simplifié
-
----
-
-## SSR ?
-
-- Server Side Rendering
-- Aussi appelé "Universal Web App"
-- Le HTML est générée côté serveur
-- Inverse de CSR (Client Side Rendering)
-
-> 👉 Le seul use-case est le SEO
+> 👉 Harder, Better, Faster, Stronger
 
 ---
 
-## Progressive Web App ?
+## Suspense?
 
-- Application qui fonctionne en offline
+- Rendering interruptions
+- Should soon be released (mid-2019)
 
-> 👉 C'est un must-have, rarement requis
+> 👉 Simpler Data-fetching
+
+---
+
+## SSR?
+
+- Server-Side Rendering
+- Also called "Universal Web App"
+- The server returns all the HTML to render the page in the first request
+- As opposed to CSR (Client-Side Rendering)
+
+> 👉 Very valuable for SEO and perceived performance
+
+---
+
+## Progressive Web App?
+
+- An application working offline
+
+> 👉 A nice to have
 
 ---
 
@@ -258,7 +274,7 @@ Co-fondateur de Smooth Code
 <div className="foo" />
 ```
 
-> 👉 Extension au langage JavaScript
+> 👉 A syntax extension to JavaScript
 
 ---
 
@@ -268,13 +284,13 @@ Co-fondateur de Smooth Code
 const element = <div />
 ```
 
-> 👉 Une instance de composant React
+> 👉 A React component instance
 
 ---
 
-## Composant
+## Component
 
-```js
+```jsx
 function Div(props) {
   return <div />
 }
@@ -282,11 +298,11 @@ function Div(props) {
 
 `props => element`
 
-> 👉 Majuscule obligatoire !
+> 👉 Uppercase required!
 
 ---
 
-## Qu'est-ce qu'une fonction ?
+## What's a function?
 
 <img style={{ maxHeight: '80vh', width: '80%' }} src={funcExplain} />
 
@@ -294,7 +310,7 @@ function Div(props) {
 
 export default GridLayout
 
-## Syntaxe des fonctions
+## Equivalences
 
 ```js
 // Named function
@@ -336,13 +352,13 @@ const fn = ({ foo }) => foo
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 JSX : extension de JavaScript
+> 👉 JSX: A syntax extension to JavaScript
 
-> 👉 Element : morceau de JSX
+> 👉 Element: A piece of JSX
 
-> 👉 Composant : fonction qui renvoie un élément
+> 👉 Component: A function that returns an element
 
 ---
 
@@ -363,35 +379,34 @@ const fn = ({ foo }) => foo
 
 ## Mount
 
-- Le composant est ajouté dans l'arbre React
+- The React element is inserted in the DOM.
 
 ---
 
 ## Update
 
-- Le composant est mis à jour
-- Déclenché par au-dessus (les props)
-- Ou par lui-même (le state)
+- The element update is reflected in the DOM.
+- Trigger by the parent or itself (not the children).
 
 ---
 
 ## Unmount
 
-- Le composant est retiré de l'arbre React
+- The element is removed from the DOM.
 
 ---
 
-## Diagramme interactif
+## Render vs commit
 
 <Iframe src="https://react-lifecycle.netlify.com" />
 
 ---
 
-## À retenir
+## To take away
 
 > 👉 Trois phases : Mount, Update, Unmount
 
-> 👉 Le rendu est déclenché lors du Mount et de l'Update
+> 👉 React first collects the changes in the render step, then commit the changes in a batch.
 
 ---
 
@@ -404,17 +419,16 @@ const fn = ({ foo }) => foo
 
 ## Create React App
 
-- Moyen le plus rapide pour démarrer
-- Maintenu par la team React
-- SVGR inside ✨😎
+- The fastest way to get started
+- Maintained by Facebook
 
 ---
 
-## Philosophie
+## Philosophy
 
 - Zero-config
-- Focus sur React
-- Scalable (éjection possible)
+- Focus on React
+- No lock-in (can eject)
 
 ---
 
@@ -426,11 +440,12 @@ const fn = ({ foo }) => foo
 - 👮‍♂️ Linter (ESLint)
 - ✨ CSS Autoprefixer
 - 🃏 Test runner (Jest)
-- 🦁 Gestion des SVG (SVGR)
+- 🦁 Handles SVG (SVGR)
+- 🚀 Fine tuned
 
 ---
 
-## À retenir
+## To take away
 
 > 👉 Projet React → create-react-app
 
@@ -457,47 +472,46 @@ const fn = ({ foo }) => foo
   allowfullscreen
 />
 
-Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
+Presented by Dan Abramov and Sophie Alpert during the React Conf 2018.
 
 ---
 
-## No breaking change !
+## No breaking changes!
 
-- Les classes restent supportées
-- Tout est 100% rétrocompatible
-- Pas imposé, mais recommandé 😏
-
----
-
-## Motivation
-
-- Partage de logique entre composants
-- Alternatives aux HOCs et aux render props
-- API plus simple à apréhender
+- Classes are still supported
+- It's 100% backward compatible
+- Encouraged for new code
 
 ---
 
-## À retenir
+## Motivations
 
-> 👉 Migrer son code progressivement 🤗
-
-> 👉 Ne pas se forcer à les utiliser 🤯
+- A simpler API to learn
+- A paradigm shift
+- Surpass the HOCs and render props limitations
 
 ---
 
-## Qu'est-ce qu’un Hook 🎣 ?
+## To take away
+
+> 👉 You can rewrite your code step by step 🤗
+
+> 👉 Take your time 🤯
+
+---
+
+## What's a Hook 🎣 ?
 
 <dl>
   <dt>React Hook</dt>
   <dd>
-    <em>/ɹiːˈækt/ /hʊk/</em> • Fonction spéciale permettant de se brancher sur
-    des features React à l'intérieur d'un composant.
+    <em>/ɹiːˈækt/ /hʊk/</em> • A special function that allows to interact with new React features inside a component.
   </dd>
 </dl>
 
 ---
 
-## Hooks basics 😇
+## Simple hooks 😇
 
 - `useState`
 - `useEffect`
@@ -505,7 +519,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-## Hooks avancés 😈
+## Advanced hooks 😈
 
 - `useReducer`
 - `useCallBack`
@@ -524,31 +538,31 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 ---
 
-<h2>Uniquement dans les fonctions,<br />tu les utiliseras.</h2>
+<h2>Only works in functional components</h2>
 
 ```js
 function Example(props) {
-  // ✅ Vous pouvez utiliser les hooks ici
+  // ✅ You can use the hooks here.
   return <div />
 }
 ```
 
-> Pas de Hooks dans les classes.
+> No Hooks in the classes.
 
 ---
 
-<h2>Au niveau le plus haut,<br />tu te positionneras.</h2>
+<h2>Should always be called in the same order</h2>
 
 ```js
 function Example(props) {
   if (props.disabled) {
-    // 🚫 Vous ne pouvez pas utiliser les hooks ici
+    // 🚫 You can't use the hooks here
   }
   return <div />
 }
 ```
 
-> Pas de conditions, boucles ou autre...
+> No conditions, unstable loops, etc.
 
 ---
 
@@ -556,27 +570,6 @@ function Example(props) {
   <Title.Picture src={ReactRecompose} />
   <Title.Text>State Management</Title.Text>
 </Title>
-
----
-
-## Hook Counter
-
-```js
-import React, { useState } from 'react'
-
-function Example() {
-  // "count" est le state, "setCount" est la fonction permettant de modifier le state
-  // "0" est la valeur initiale
-  const [count, setCount] = useState(0)
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-    </div>
-  )
-}
-```
 
 ---
 
@@ -606,21 +599,42 @@ class Example extends React.Component {
 
 ---
 
-## Le state n’est pas mergé
+## Hook Counter
 
 ```js
-const [coords, setCoords] = useState({ x: 10, y: 20 })
-setCoords({ x: 15 })
-// Les nouvelles coordonnées seront { x: 15 } et pas { x: 10, y: 15 }
+import React, { useState } from 'react'
+
+function Example() {
+  // "count" is the state, "setCount" is the function to update the state.
+  // "0" is the initial value.
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  )
+}
 ```
 
 ---
 
-## Déclarer plusieurs états
+## The state is not merged
+
+```js
+const [coords, setCoords] = useState({ x: 10, y: 20 })
+setCoords({ x: 15 })
+// The new state will be { x: 15 } and not { x: 10, y: 15 }
+```
+
+---
+
+## Use different states
 
 ```js
 function ExampleWithManyStates() {
-  // Déclarer plusieurs state dans la même fonction !
+  // Mutliple states in the same component
   const [age, setAge] = useState(42)
   const [fruit, setFruit] = useState('banana')
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }])
@@ -628,11 +642,11 @@ function ExampleWithManyStates() {
 }
 ```
 
-> 👉 Ne pas hésiter à décomposer les states
+> 👉 You can call multiple hooks
 
 ---
 
-## Comment ça marche ?
+## How does it work?
 
 ```js
 function Example() {
@@ -647,9 +661,9 @@ function Example() {
 }
 ```
 
-- `count` est à 0 au montage
-- Au clic sur le bouton, le state est mis à jour
-- Le composant est re-rendu, `count` est à 1
+- `count` starts at 0 when it mounts
+- When the button is clicked, the state is updated
+- The component re-render, `count` is at 1
 
 ---
 
@@ -657,13 +671,13 @@ function Example() {
 
 ```js
 const [count, setCount] = useState(0)
-// On peut passer une valeur directement
+// You can prodive a new value directly
 setCount(10)
-// Si on utilise le state précédent, on passe une fonction
+// You can pull the previous value
 setCount(previousCount => previousCount + 1)
 ```
 
-> 👉 Toujours utiliser une fonction si on part du state précédent
+> 👉 It's better to use a function when you need to consider the previous value.
 
 ---
 
@@ -678,7 +692,7 @@ setCount(previousCount => previousCount + 1)
 
 ```js
 function Example() {
-  // Input non contrôlé, il gère son state seul
+  // Uncontrolled component, the input "own" the state.
   return <input defaultValue="initial value" />
 }
 ```
@@ -690,7 +704,7 @@ function Example() {
 ```js
 function Example() {
   const [value, setValue] = useState('')
-  // Input contrôlé, le state est hors du composant "input"
+  // Controlled input, the state is "owned" by the component Example.
   return (
     <input value={value} onChange={event => setValue(event.target.value)} />
   )
@@ -714,13 +728,13 @@ function ControlledInput({ defaultValue, ...props }) {
 }
 ```
 
-> 👉 Il est possible de créer un composant non-contrôlé à partir d'un composant contrôlé, mais pas l'inverse.
+> 👉 You can create a non-controlled component with a controlled component but not the other way around.
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 Toujours privilégier les composants contrôlés 👮‍♂️
+> 👉 Controlled components are prefered 👮‍♂️
 
 ---
 
@@ -735,15 +749,14 @@ function ControlledInput({ defaultValue, ...props }) {
 
 ---
 
-# Qu'est-ce qu'un effet ✨ ?
+# What's an effect ✨?
 
 ---
 
 <dl>
   <dt>Effet</dt>
   <dd>
-    <em>\e.fɛ\</em> • Effet de bord sous forme de fonction déclenché après le
-    rendu du composant.
+    <em>\e.fɛ\</em> • A side effect function called after the commit phase.
   </dd>
 </dl>
 
@@ -753,10 +766,11 @@ function ControlledInput({ defaultValue, ...props }) {
 
 ```js
 import React, { useState, useEffect } from 'react'
+
 function Example() {
   const [count, setCount] = useState(0)
 
-  // Similar to componentDidMount and componentDidUpdate:
+  // Close to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // Update the document title using the browser API
     document.title = 'You clicked ' + count + ' times'
@@ -773,7 +787,7 @@ function Example() {
 
 ---
 
-## Équivalent
+## Classes equivalent
 
 ```js
 class Example extends React.Component {
@@ -807,15 +821,15 @@ class Example extends React.Component {
 
 ---
 
-## Penser "effect"
+## The "effect" mindset
 
-- Quel est l’effet de bord ?
-- Comment dois-je le nettoyer ?
-- Qu’est-ce qui impacte cet effet ?
+- What's the effect?
+- What should I clean up?
+- What trigger this effect?
 
 ---
 
-## Nettoyage
+## The clean up
 
 ```js
 function ClickSpy() {
@@ -824,7 +838,7 @@ function ClickSpy() {
       alert('clicked')
     }
     document.addEventListener('click', handleClick)
-    // La fonction retournée par l'effet est le "clean"
+    // The function return by the effect is the clean up
     return () => {
       document.removeEventListener('click', handleClick)
     }
@@ -848,7 +862,7 @@ function ClickSpy() {
 
 ---
 
-## Séparation des responsabilités
+## The separation of the responsibilities
 
 ```js
 useEffect(() => {
@@ -859,26 +873,26 @@ useEffect(() => {
 })
 ```
 
-> 👉 Un effet → Une responsabilité
+> 👉 One effect → One problem
 
 ---
 
-## Dépendances
+## Dependencies
 
 ```js
 function PageTitle({ title }) {
   useEffect(() => {
     document.title = title
-  }, [title]) // Cet effet sera déclenché que si "title" change
+  }, [title]) // The effect is triggered for each unique title value
   return null
 }
 ```
 
-> 👉 Les dépendances sont les variables externes utilisées dans l'effet
+> 👉 The dependencies are the external values used in the effect.
 
 ---
 
-## Montage uniquement
+## Run only once
 
 ```js
 function MountSpy() {
@@ -889,7 +903,7 @@ function MountSpy() {
 }
 ```
 
-> 👉 Pas de dépendances, donc uniquement au montage !
+> 👉 No dependencies, it's only run during the Mount phase!
 
 ---
 
@@ -904,7 +918,7 @@ function MountSpy() {
 
 ---
 
-## Composition de Hooks
+## Asynchronous data
 
 ```js
 function App() {
@@ -912,16 +926,48 @@ function App() {
   const [movies, setMovies] = useState(null)
 
   useEffect(() => {
+    const expired = false
     axios
       .get('https://api.themoviedb.org/3/search/movie', {
-        params: {
-          api_key: 'c5742978852b8f695a61e22a33a8196c',
-          query,
-        },
+        params: { api_key: 'c5742978852b8f695a61e22a33a8196c', query },
       })
       .then(res => {
-        setMovies(res.data.results)
+        if (!expired) {
+          setMovies(res.data.results)
+        }
       })
+
+    return () => { expired = true }
+  }, [query])
+
+  /* ... */
+}
+```
+
+> ⚠️ Asynchronous data.
+
+---
+
+## Hooks composition
+
+```js
+function App() {
+  const [query, setQuery] = useState('Lord of the Rings')
+  const [movies, setMovies] = useState(null)
+
+  useEffect(() => {
+    const expired = false
+    axios
+      .get('https://api.themoviedb.org/3/search/movie', {
+        params: { api_key: 'c5742978852b8f695a61e22a33a8196c', query },
+      })
+      .then(res => {
+        if (!expired) {
+          setMovies(res.data.results)
+        }
+      })
+
+    return () => { expired = true }
   }, [query])
 
   /* ... */
@@ -930,26 +976,37 @@ function App() {
 
 ---
 
-## Extraire notre Hook
+## Let's extract our Hook
 
 ```js
 function useMovieSearch(query) {
   const [movies, setMovies] = useState(null)
 
   useEffect(() => {
+    const expired = false
     axios
       .get('https://api.themoviedb.org/3/search/movie', {
-        params: {
-          api_key: 'c5742978852b8f695a61e22a33a8196c',
-          query,
-        },
+        params: { api_key: 'c5742978852b8f695a61e22a33a8196c', query },
       })
       .then(res => {
-        setMovies(res.data.results)
+        if (!expired) {
+          setMovies(res.data.results)
+        }
       })
+
+    return () => { expired = true }
   }, [query])
 
   return movies
+}
+```
+
+```js
+function App() {
+  const [query, setQuery] = useState('Lord of the Rings')
+  useMovieSearch(query)
+
+  /* ... */
 }
 ```
 
@@ -957,9 +1014,9 @@ function useMovieSearch(query) {
 
 ## Rules of Hooks
 
-- Tous les hooks doivent être au premier niveau
-- Un custom hook est préfixé par `use`
-- Une seule reponsabilité par Hook
+- Predictable order
+- A custom hook is prefixed with `use`
+- One feature per hook
 
 ---
 
@@ -974,7 +1031,7 @@ function useMovieSearch(query) {
 
 ---
 
-## Utilisation
+## Usage
 
 ```js
 <ErrorBoundary>
@@ -982,27 +1039,27 @@ function useMovieSearch(query) {
 </ErrorBoundary>
 ```
 
-> 👉 Comparable à un try / catch
+> 👉 Similar to a try/catch
 
 ---
 
-## Implémentation
+## Implementation
 
 ```js
 import React, { Component } from 'react'
 
 export default class Catch extends Component {
-  // Création du state initial
+  // We create the initial state
   state = { hasError: false }
 
   static getDerivedStateFromError(error) {
-    // Mise à jour du state, au prochain rendu, nous saurons qu'une erreur a été catchée
+    // Update the state to display the error message
     return { hasError: true }
   }
 
   render() {
     if (this.state.hasError) {
-      // Affichage du fallback de notre choix
+      // We display the fallback we like
       return <h1>Something went wrong.</h1>
     }
 
@@ -1013,9 +1070,9 @@ export default class Catch extends Component {
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 Mettre des boundaries aux endroits stratégique
+> 👉 Use error boundaries at strategical places.
 
 ---
 
@@ -1030,7 +1087,7 @@ export default class Catch extends Component {
 
 ---
 
-## Prenons un Hook
+## Let's take this Hook
 
 ```js
 function useCounter() {
@@ -1047,7 +1104,7 @@ function useCounter() {
 
 ---
 
-## Dans un composant...
+## In a component...
 
 ```js
 function Example() {
@@ -1066,13 +1123,13 @@ function Example() {
 
 ## Que se passe-t-il ?
 
-- A chaque tick de l'interval, `setCount` est appelé
-- Un nouveau state est généré
-- Le composant `Example` est re-rendu
+- At each tick of the interval, `setCount` is called
+- A new state value is generated
+- The component `Example` rerender
 
 ---
 
-## Pauvre `OtherStuff`, il n'a rien demandé !
+## However `OtherStuff` rerenders too!
 
 ```js
 function Example() {
@@ -1080,7 +1137,7 @@ function Example() {
 
   return (
     <div>
-      {/* OtherStuff va être re-rendu pourtant il n’utilise pas le compteur */}
+      {/* OtherStuff rerender but is not using the counter */}
       <OtherStuff />
       <div>{count}</div>
     </div>
@@ -1090,14 +1147,14 @@ function Example() {
 
 ---
 
-## Et si `useCounter` émet une erreur ?
+## What if `useCounter` throw an error?
 
-- L’erreur est émise par le composant qui contient le Hook
-- `Example` est donc l'émetteur de l’erreur
+- The error is thrown by the component that hosts the hook
+- `Example` is the component that throws the error
 
 ---
 
-# Comment localiser une logique ?
+# How to isolate the logic?
 
 ---
 
@@ -1108,27 +1165,27 @@ function Example() {
 
 ---
 
-## Implémentation
+## Implementation
 
 ```js
 function Counter({ children }) {
   const count = useCounter()
-  // `children` est habituellement un ou plusieurs élément
-  // ici ce sera une fonction, la "render prop" !
+  // `children` is usually a node element.
+  // Here, it's a function, the "render prop"!
   return children(count)
 }
 ```
 
 ---
 
-## Utilisation
+## Usage
 
 ```js
 function Example() {
   return (
     <div>
       <OtherStuff />
-      {/* On passe une fonction en `children` */}
+      {/* We provide the function as a `children` */}
       <Counter>{count => <div>{count}</div>}</Counter>
     </div>
   )
@@ -1137,15 +1194,15 @@ function Example() {
 
 ---
 
-## Ce qui a changé
+## What changed?
 
 ```js
 function Example() {
   return (
     <div>
-      {/* Example, ne se re-rend plus, OtherStuff n'est donc pas re-rendu */}
+      {/* Example, doesn't rerender, OtherStuff doesn't rerender either */}
       <OtherStuff />
-      {/* Le compteur se re-rend et appelle la fonction "children" */}
+      {/* The compteur rerender, call the "children" function each time */}
       <Counter>{count => <div>{count}</div>}</Counter>
     </div>
   )
@@ -1161,7 +1218,7 @@ function Example() {
   return (
     <div>
       <OtherStuff />
-      {/* Je peux placer une Error Boundary autour de mon composant "Counter" */}
+      {/* I can use an Error Boundary around the component "Counter" */}
       <Catch>
         <Counter>{count => <div>{count}</div>}</Counter>
       </Catch>
@@ -1172,13 +1229,13 @@ function Example() {
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 Les hooks ne remplacent pas les render props
+> 👉 The render props still have their use cases (as the HOCs)
 
-> 👉 Les render props permettent une isolation du rendu
+> 👉 The render props allow the isolation of the rendering
 
-> 👉 Elle permettent une gestion fine des erreurs
+> 👉 The render props allow a fine grain handling of the errors
 
 ---
 
@@ -1193,7 +1250,7 @@ function Example() {
 
 ---
 
-## La gestion du state, c’est compliqué
+## State handling is hard
 
 ```js
 function Example() {
@@ -1208,11 +1265,11 @@ function Example() {
 }
 ```
 
-La logique est interne au composant, c'est mal 🙄.
+Can we do better? 🙄
 
 ---
 
-# `useReducer` à la rescousse !
+# `useReducer` can help!
 
 <iframe
   src="https://giphy.com/embed/l0HlTPnnfzRsf4f2U"
@@ -1224,10 +1281,10 @@ La logique est interne au composant, c'est mal 🙄.
 
 ---
 
-## Même exemple avec `useReducer`
+## The same example with `useReducer`
 
 ```js
-// Le reducer est une simple fonction testable
+// The reducer decouple the actions from the output
 function reducer(count, action) {
   switch (action.type) {
     case 'increment':
@@ -1242,7 +1299,7 @@ function reducer(count, action) {
 function Example() {
   const [count, dispatch] = useReducer(reducer)
 
-  // Le composant se contente d'émettre des actions
+  // The component only triggers actions
   return (
     <div>
       <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
@@ -1254,13 +1311,11 @@ function Example() {
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 Gestion du state centralisée
+> 👉 Decouple the action from the output
 
-> 👉 Le reducer est testable
-
-> 👉 Le code des composants est plus clair
+> 👉 You can test the reducer logic
 
 ---
 
@@ -1283,19 +1338,19 @@ function Example() {
 
 ## Styled Components
 
-- Le style fait parti du composant
-- Le style change en fonction des props
-- Du vrai CSS !
+- Collocate the styles with the element
+- Accept style functions
+- Support the CSS syntax!
 
 ---
 
-## Comment créer un composant Card ?
+## How should I create a Card component?
 
 ---
 
 import Card from './components/Card'
 
-## Ce que je veux obtenir
+## What I want:
 
 <Card>
   <Card.Header>Hello!</Card.Header>
@@ -1304,7 +1359,7 @@ import Card from './components/Card'
 
 ---
 
-## Je crée mon composant !
+## Ok, let's build it
 
 ```js
 const CardHeader = styled.div``
@@ -1326,7 +1381,7 @@ function Card({ title, text }) {
 
 ---
 
-# Ça marche !
+# It works
 
 ---
 
@@ -1342,7 +1397,7 @@ function Card({ title, text }) {
 
 ---
 
-# “Tu peux enlever le titre ?”
+# “Can you remove the title?”
 
 <Card>
   <Card.Body>I am a Card</Card.Body>
@@ -1350,7 +1405,7 @@ function Card({ title, text }) {
 
 ---
 
-## “OK, pas de soucis !”
+## “OK, no problem!”
 
 ```js
 const CardHeader = styled.div``
@@ -1380,7 +1435,7 @@ function Card({ title, text }) {
 
 ---
 
-# “Le titre sur un fond vert est plus parlant.”
+# “The card title should be on a green background, it's better”
 
 <Card>
   <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
@@ -1389,7 +1444,7 @@ function Card({ title, text }) {
 
 ---
 
-## “OK, je pense que je peux le faire.”
+## “OK, I can do it.”
 
 ```js
 const CardHeader = styled.div``
@@ -1423,7 +1478,7 @@ function Card({ title, titleBackgroundColor, text }) {
 
 ---
 
-# “Tu peux mettre une barre de pub à la place du header ?”
+# “Could display a small ad banner instead of the card title?”
 
 <Card>
   <div
@@ -1475,7 +1530,7 @@ function Card({ title, titleBackgroundColor, ad, text }) {
 
 ---
 
-# Et si on avait fait autrement ? 🤔
+# Can we do it differently? 🤔
 
 ---
 
@@ -1563,11 +1618,11 @@ Card.Header = styled.div``
 
 ---
 
-## À retenir
+## To take away
 
-> 👉 Pensez aux "children"
+> 👉 Start as close as the DOM nodes as possible
 
-> 👉 Un composant par élément DOM
+> 👉 Don't abstract too early
 
 ---
 
@@ -1582,29 +1637,29 @@ Card.Header = styled.div``
 
 ---
 
-## Le contexte c'est quoi ?
+## What's the context?
 
 <img src={contextPic} />
 
 ---
 
-## Exemple
+## Example
 
 ```js
 import React, { createContext, useContext } from 'react'
 
-// On crée un `ThemeContext` avec pour valeur par défaut "white"
+// We create a `ThemeContext` with the default value: "white".
 const ThemeContext = createContext('white')
 
 function Button({ children }) {
-  // On récupère la valeur injecté dans le contexte avec `useContext`
+  // We collect the value present in the context with `useContext`.
   const theme = useContext(ThemeContext)
   return <button style={{ color: theme }}>{children}</button>
 }
 
 function App() {
-  // Le `Context.Provider` permet d'injecter une valeur dans `ThemeContext`
-  // Tous les enfants ont alors accès à cette valeur
+  // The `Context.Provider` component inject a value in `ThemeContext`.
+  // All the children have access to it.
   return (
     <ThemeContext.Provider value="black">
       <Button>Hello</Button>
@@ -1615,21 +1670,21 @@ function App() {
 
 ---
 
-## Que se passe-t-il ?
+## The update mechanism
 
-- Le `Provider` subit un mount/update
-- La valeur injectée est-elle différente ?
-  - Oui → les `Consumer` sont re-rendus
-  - Non → rien ne se passe
+- The `Provider` is mounted/updated
+- Is the injected value different?
+  - Yes → The `Consumer` are rerender, deep in the React tree
+  - No → Nothing happens
 
 ---
 
-## Contexte riche
+## Rich context values
 
 ```js
 function ThemeProvider({ color, font }) {
-  // L'objet `value` est nouveau à chaque rendu
-  // `ThemeContext` notifie donc ses "consumers" à chaque rendu
+  // We create a new `value` at each render
+  // `ThemeContext` everything updates at each render, it's slow
   const value = { color, font }
   return (
     <ThemeContext.Provider value={value}>
@@ -1641,12 +1696,12 @@ function ThemeProvider({ color, font }) {
 
 ---
 
-## `useMemo`
+## The solution: `useMemo`
 
 ```js
 function ThemeProvider({ theme }) {
-  // `useMemo` mémorise le résultat de la fonction tant que les dépendances ne changent pas
-  // Tant que `theme` n'a pas changé, on aura le même objet `value`
+  // `useMemo` save the output of the function as long as the dependencies are the same.
+  // As long as theme does't change, nothing happen.
   const value = useMemo(() => ({ theme }), [theme])
   return (
     <ThemeContext.Provider value={value}>
@@ -1658,13 +1713,13 @@ function ThemeProvider({ theme }) {
 
 ---
 
-## Contexte dynamique
+## Dynamique context
 
 ```js
 function ThemeProvider({ defaultTheme, children }) {
-  // Un `state` contient le `theme`
+  // A `state` holds le `theme`.
   const [theme, setTheme] = useState(defaultTheme)
-  // On injecte la fonction `setTheme` dans le contexte
+  // We inject the update function `setTheme` in the context.
   const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme])
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
@@ -1687,20 +1742,20 @@ function ThemeSwitcher() {
 
 <Title>
   <Title.Picture src={Redux} />
-  <Title.Text>Avoid Redux</Title.Text>
+  <Title.Text>Should I use Redux?</Title.Text>
 </Title>
 
 ---
 
-## Qu'est-ce que Redux ?
+## What's Redux?
 
-- Communication entre les composants
-- State modifié par un reducer
-- Connect / Dispatch
+- A global data store
+- The state changes with a reducer
+- Use a connect / dispatch API
 
 ---
 
-## C'est déjà dans React !
+## It's already in React
 
 - `createContext`
 - `useReducer`
@@ -1715,9 +1770,9 @@ import React, { createContext, useReducer, useContext } from 'react'
 const ReduxContext = createContext()
 
 export function ReduxProvider({ reducer, initialState, children }) {
-  // On cré un reducer
+  // We create a reducer
   const [state, dispatch] = useReducer(reducer, initialState)
-  // On injecte le state et la fonction dispatch
+  // We inject the state in the dispatch function
   const value = useMemo(() => ({ state, dispatch }), [state, dispatch])
   return <ReduxContext.Provider value={value}>{children}</ReduxContext.Provider>
 }
@@ -1772,7 +1827,7 @@ function RegisterButton() {
 
 ```js
 function Example() {
-  // `ref.current` sera la référence vers l'élément une fois le composant monté
+  // `ref.current` is a reference toward the DOM element once mounted.
   const ref = useRef()
   return <input type="text" ref={ref} />
 }
@@ -1788,7 +1843,7 @@ const FancyInput = React.forwardRef((props, ref) => (
 ))
 
 function Example() {
-  // `ref.current` sera la référence à l'élément DOM input
+  // `ref.current` will be a reference to te DOM input element.
   const ref = useRef()
   return <FancyInput ref={ref} />
 }
@@ -1822,8 +1877,8 @@ function Example() {
 
 ## `useImperativeHandle`
 
-- Permet de customiser l’instance générée par `useRef`
-- A n’utiliser qu’avec `forwardRef`
+- To affect a custom value to a ref
+- To be used with `React.forwardRef`
 
 ---
 
@@ -1838,7 +1893,7 @@ function Example() {
 
 ---
 
-## `useEffect` ne marche pas !
+## `useEffect` doesn't work!
 
 ```js
 function Example() {
@@ -1851,11 +1906,11 @@ function Example() {
 }
 ```
 
-> useEffect capture les variables au montage
+> ⚠️ JavaScript closures
 
 ---
 
-## C'était pareil avant
+## Same as before
 
 <iframe
   src="https://codesandbox.io/embed/w2wxl3yo0l?fontsize=14"
@@ -1865,15 +1920,15 @@ function Example() {
 
 ---
 
-# Comment faire ?
+# How to solve the problem?
 
 ---
 
-# 1. Spécifier les dépendances
+# 1. Define the dependencies
 
 ---
 
-## Avec dépendances
+## With the dependencies
 
 ```js
 function Example() {
@@ -1888,11 +1943,11 @@ function Example() {
 
 ---
 
-# 2. `useRef` à la rescousse !
+# 2. `useRef`!
 
 ---
 
-## Avec `useRef`
+## With `useRef`
 
 ```js
 function Example() {
@@ -1909,14 +1964,14 @@ function Example() {
 
 ---
 
-## Qu'est-ce que le `useRef` ?
+## What's `useRef`?
 
-- Un objet unique à votre instance de composant
-- Un moyen de stocker des valeurs sans déclencher un update
+- A value that is saved during the lifetime of the element
+- A way to store values that are not used in the render output
 
 ---
 
-## Utilisation
+## Usage
 
 ```js
 const ref = useRef(/* initial value */)
@@ -1930,7 +1985,3 @@ ref.current // Access ref value using `ref.current`
 ---
 
 # Thanks!
-
-> 😍 J'ai aimé, [je poste un avis](https://www.google.fr/maps/place/Smooth+Code/@48.8657415,2.3519553,17z/data=!3m1!4b1!4m5!3m4!1s0x47e66e1a846e6f39:0x3140a381af8bfb56!8m2!3d48.865738!4d2.354144?hl=en) !
-
-> 🤭 Je n'ai pas aimé, je m'abstiens !

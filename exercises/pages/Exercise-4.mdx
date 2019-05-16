@@ -7,15 +7,15 @@ order: 4
 
 ## Instructions
 
-Nous allons maintenant créer un Hook spécifique qui aura pour responsabilité de faire une recherche sur l'API.
+We will now create a specific Hook who will be responsible for doing a search on the API.
 
-- Créer un Hook custom `useMovieSearch` dans `src/containers/MovieDb.js`
+- Create a custom `useMovieSearch` Hook in `src/containers/MovieDb.js`
 
-Le Hook custom devra permettre de récupérer une liste de films depuis l'API.
+The Hook custom will have to allow to recover a list of films from the API.
 
-### Résultat attendu
+### Expected result
 
-L'application fonctionne comme auparavant.
+The application works as before.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-4/?fontsize=14&view=preview"
@@ -29,7 +29,7 @@ L'application fonctionne comme auparavant.
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
 ### App.js
 
@@ -43,23 +43,18 @@ import { useMovieSearch } from './containers/MovieDb'
 export default function App() {
   const [query, setQuery] = useState('Lord of the Rings')
 
-  // Utilisation du Hook custom permettant de récupérer la liste de films depuis l’API
+  // The usage of the custom Hook to collect the list of movies from the API
   const movies = useMovieSearch(query)
 
   return (
     <>
-      {/* Le composant "Grid" centre dans la page, "py" signifie "padding-top" et "padding-bottom" */}
       <Grid py={200}>
-        {/* Injection de normalize.css pour avoir un rendu consistant sur tous les navigateurs */}
         <Normalize />
-        {/* "Typography" est un composant avec des variantes de titres prêtes à l'emploi */}
         <Typography variant="display-1">Smooth Movie</Typography>
-        {/* Votre composant "SearchInput" */}
         <SearchInput
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
-        {/* Affichage de la liste de films */}
         {movies && movies.map(movie => <p key={movie.id}>{movie.title}</p>)}
       </Grid>
     </>

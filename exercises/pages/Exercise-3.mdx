@@ -7,16 +7,16 @@ order: 3
 
 ## Instructions
 
-Nous allons désormais récupérer les données depuis l'[API de TheMovieDB](https://developers.themoviedb.org/3). Une clef d'API a déjà été créée, nous pourrons donc nous concentrer sur la partie applicative.
+We will now retrieve the data from the [TheMovieDB API](https://developers.themoviedb.org/3). An API key has already been created, so we can focus on the application part.
 
-Pour récupérer les données, nous utiliserons la librairie [axios](https://github.com/axios/axios), cela permet de faire des requêtes HTTP de façon simple et d'assurer une compatibilité sur tous les navigateurs.
+To retrieve the data, we will use the library [axios](https://github.com/axios/axios), this allows to make HTTP requests in a simple way and to ensure compatibility on all browsers.
 
-- Installer `axios`
-- A l'aide de `useEffect`, `useState` et `axios` récupérer les données depuis l'API
+- Install `axios`
+- Using `useEffect`,` useState` and `axios` recover data from the API
 
-### Résultat attendu
+### Expected result
 
-Lorsque l'utilisateur tape dans le champs de recherche, la liste de films correspondants s'affiche.
+When the user types in the search field, the corresponding movie list is displayed.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-3/?fontsize=14&view=preview"
@@ -30,9 +30,9 @@ Lorsque l'utilisateur tape dans le champs de recherche, la liste de films corres
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Utilisation de l'API avec axios
+### How should I use the Movie API with Axios?
 
 ```js
 axios
@@ -58,14 +58,14 @@ import SearchInput from './components/SearchInput'
 
 export default function App() {
   const [query, setQuery] = useState('Lord of the Rings')
-  /* TODO: créer un state pour les films */
+  /* TODO: create a state for the movies */
 
   useEffect(
     () => {
-      /* TODO: faire la requête */
+      /* TODO: perform the request */
     },
     [
-      /* TODO: spécifier les dépendances nécessaires */
+      /* TODO: define the necessary dependencies */
     ],
   )
 
@@ -78,7 +78,7 @@ export default function App() {
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
-        {/* TODO: afficher la liste des films */}
+        {/* TODO: display the list of movies */}
       </Grid>
     </>
   )

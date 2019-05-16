@@ -8,12 +8,12 @@ function Provider({ children }) {
   return (
     <>
       <Head>
-        <title>React Hooks Workshop</title>
+        <title>React Advanced Workshop</title>
         <meta name="twitter:site" content="@neoziro" />
-        <meta name="twitter:title" content="React Hooks Workshop" />
+        <meta name="twitter:title" content="React Advanced Workshop" />
         <meta
           name="twitter:description"
-          content="React Hooks Workshop by Greg Bergé"
+          content="React Advanced Workshop for React Europe"
         />
       </Head>
       {children}

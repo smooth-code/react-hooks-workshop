@@ -7,16 +7,16 @@ order: 6
 
 ## Instructions
 
-L'application gère les erreurs, mais pas de manière fine. Le comportement souhaité serait que l'erreur soit affichée à la place de la liste de films et non sur toute l'application.
+The application handles errors, but not in a fine way. The desired behavior would be that the error is displayed instead of the movie list and not the entire application.
 
-La stratégie adoptée est donc d'isoler la liste de films et le fetching des données dans un composant afin de pouvoir l'englober dans un `Catch`.
+The strategy is to isolate the movie list and fetching the data in a component so that it can be included in a Catch.
 
-- Créer un composant "render props" dans `MovieSearch` dans `src/containers/MovieDb.js`
-- Intégrer ce composant dans `App` et ajouter un `Catch` autour
+- Create a "render props" component in MovieSearch in `src/containers/MovieDb.js`
+- Integrate this component in `App` and add a` Catch` around
 
-### Résultat attendu
+### Expected result
 
-Lorsque le champs de recherche est vide, j'obtiens une erreur à la place de la liste de films.
+When the search field is empty, I get an error instead of the movie list.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-6/?fontsize=14&view=preview"
@@ -30,9 +30,9 @@ Lorsque le champs de recherche est vide, j'obtiens une erreur à la place de la 
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Render props : implémentation
+### Render props: implementation
 
 ```js
 export function Counter({ initialValue, children }) {
@@ -41,7 +41,7 @@ export function Counter({ initialValue, children }) {
 }
 ```
 
-### Render props : utilisation
+### Render props: usage
 
 ```js
 function Example() {

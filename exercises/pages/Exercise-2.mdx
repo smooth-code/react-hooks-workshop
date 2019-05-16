@@ -7,20 +7,20 @@ order: 2
 
 ## Instructions
 
-Dans un premier temps, nous allons nous concentrer sur le champ de recherche, un simple `input` contrôlé, nous afficherons la recherche tapée par l'utilisateur.
+At first, we will focus on the search field, a simple controlled input, we will display the search typed by the user.
 
-Nous utiliserons [Smooth UI](https://smooth-ui.smooth-code.com/docs-components-input), une librairie d'UI moderne et simple. Cela nous permettra d'avoir un site agréable à regarder sans avoir à écrire beaucoup de CSS.
+We will use [Smooth UI](https://smooth-ui.smooth-code.com/docs-components-input). This will allow us to have a nice site to look at without having to write a lot of CSS.
 
-Smooth UI utilise [styled-components](https://www.styled-components.com/), la solution la plus populairer pour faire du CSS in JS en React.
+We will also use [styled-components](https://www.styled-components.com/).
 
-- Installer `styled-components @smooth-ui/core-sc`
-- Créer un composant `input` contrôlé dans `src/components/SearchInput.js`
-- Placer le composant `SearchInput` dans `App` et afficher sa valeur à l'aide de `useState`
-- Supprimer les fichiers inutilisés : `App.css`, `logo.svg` et `App.test.js`
+- Install `styled-components @smooth-ui/core-sc`
+- Create an input `controlled` component in `src/components/SearchInput.js`
+- Place the `SearchInput` component in `App` and display its value using `useState`
+- Delete unused files: `App.css`, `logo.svg` and `App.test.js`
 
-### Résultat attendu
+### Expected result
 
-Un champs de recherche simple, avec la recherche qui reflète ce qu'a tapé l'utilisateur.
+A simple search fields, with search that reflects what the user typed:
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-2/?fontsize=14&view=preview"
@@ -34,9 +34,9 @@ Un champs de recherche simple, avec la recherche qui reflète ce qu'a tapé l'ut
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Installation d'un package npm
+### How to install the packages?
 
 ```bash
 # Installation de packages depuis npm
@@ -71,34 +71,34 @@ import { Normalize, Grid, Typography } from '@smooth-ui/core-sc'
 import SearchInput from './components/SearchInput'
 
 export default function App() {
-  /* TODO: A l'aide de "useState", connecter le champs "SearchInput" */
+  /* TODO: With the help of "useState", you should connect the "SearchInput" field */
   return (
     <>
-      {/* Le composant "Grid" centre dans la page, "py" signifie "padding-top" et "padding-bottom" */}
+      {/* The "Grid" component centers the child in the page, "py" means "padding-top" and "padding-bottom" */}
       <Grid py={200}>
-        {/* Injection de normalize.css pour avoir un rendu consistant sur tous les navigateurs */}
+        {/* Normalize the CSS output between the different browsers */}
         <Normalize />
-        {/* "Typography" est un composant avec des variantes de titres prêtes à l'emploi */}
+        {/* a "Typography" composant with ready to use variants */}
         <Typography variant="display-1">Smooth Movie</Typography>
-        {/* Le composant "SearchInput" */}
+        {/* The "SearchInput" component */}
         <SearchInput
-          value={/* TODO: récupérer la valeur depuis le state */}
-          onChange={/* TODO: notifier les changements au state */}
+          value={/* TODO: get the value from the state */}
+          onChange={/* TODO: collect the updates */}
         />
-        <p>Search: {/* TODO: afficher la valeur depuis le state */}</p>
+        <p>Search: {/* TODO: display the state value */}</p>
       </Grid>
     </>
   )
 }
 ```
 
-### Récupération de la valeur d'un input
+### How to collect the value from an input?
 
 ```js
 <input
   onChange={event => {
-    // Un event est passé en paramètre, "target" désigne l'élément DOM "input"
-    // Un "input" a une propriété "value" qui correspond à la valeur qu'il contient
+    // An event is provided as first argument, "target" is the element that has emitted the event, it's the DOM "input" in our case.
+    // An "input" has a "value" property
     console.log(event.target.value)
   }}
 />

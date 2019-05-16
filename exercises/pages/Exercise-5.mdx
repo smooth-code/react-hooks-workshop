@@ -7,17 +7,17 @@ order: 5
 
 ## Instructions
 
-Actuellement notre application ne gère pas les cas d'erreur. Lorsque l'on utilise une API externe, on ne la maîtrise pas et il faut toujours s'attendre à avoir des erreurs.
+Currently our application does not handle error cases. When using an external API, we do not control it and we must always expect to have errors.
 
-Nous allons utiliser les [Error Boundaries](https://reactjs.org/docs/error-boundaries.html), avec cette technique, nous serons à la fois tolérants aux erreurs issues de l'API mais aussi à celles issues de notre propre code.
+We will use the [Error Boundaries](https://reactjs.org/docs/error-boundaries.html), with this technique, we will be both tolerant of errors from the API but also to those from our own code.
 
-- Créer une `ErrorBoundary` simple dans `src/components/Catch.js`
-- Englober toute l'application avec le composant `Catch` dans `index.js`
-- Modifier le Hook custom `useMovieSearch` pour emettre une erreur lorsque la requête échoue
+- Create a simple `ErrorBoundary` in `src/components/Catch.js`
+- Wrap the entire application with the `Catch` component in `index.js`
+- Modify the custom `useMovieSearch` Hook to issue an error when the request fails
 
-### Résultat attendu
+### Expected result
 
-Lorsque le champs de recherche est vide, j'ai un message d'erreur.
+When the search field is empty, I have an error message.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-5/?fontsize=14&view=preview"
@@ -31,9 +31,9 @@ Lorsque le champs de recherche est vide, j'ai un message d'erreur.
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Error Boundary : implémentation
+### Error Boundary: implementation
 
 ```js
 import React, { Component } from 'react'
@@ -42,13 +42,13 @@ export default class Catch extends Component {
   state = { hasError: false }
 
   static getDerivedStateFromError(error) {
-    // Mise à jour du state, au prochain rendu, nous saurons qu'une erreur a été catchée
+    // Update the state, at the next rendering, we'll know that an error has been caught
     return { hasError: true }
   }
 
-  render() {
+  render () {
     if (this.state.hasError) {
-      // Affichage du fallback de notre choix
+      // Display of the fallback of our choice
       return <h1>Something went wrong.</h1>
     }
 
@@ -57,35 +57,35 @@ export default class Catch extends Component {
 }
 ```
 
-### Error Boundary : utilisation
+### How do you the error bondary?
 
 ```js
 ReactDOM.render(
   <Catch>
     <App />
-  </Catch>,
+  </Catch>
   document.getElementById('root'),
 )
 ```
 
-### Stratégie pour `throw`
+### How should I throw the error?
 
 ```js
 import { useState, useEffect } from 'react'
 
-function useApi() {
-  // State contenant le résultat
+function useApi () {
+  // State containing the result
   const [state, setState] = useState({ result: null, error: null })
 
   useEffect(() => {
     request()
-      // Lorsque tout se passe bien, j'obtiens un résultat
+      // When everything goes well, I get a result
       .then(result => setState({ result, error: null }))
-      // En cas d'erreur, le catch est appelé
+      // In case of error, the catch is called
       .catch(error => setState({ error, result: null }))
   })
 
-  // Si une erreur a été retournée par la requête, alors je throw
+  // If an error has been returned by the query, then I throw
   if (state.error) {
     throw state.error
   }

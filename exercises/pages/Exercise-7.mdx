@@ -7,14 +7,14 @@ order: 7
 
 ## Instructions
 
-Nous allons refactorer notre composant `useMovieSearch` avec `useReducer` afin de le rendre plus clair et testable.
+We will refactor our `useMovieSearch` component with `useReducer` to make it clearer and easily testable.
 
-- Utiliser `useReducer` dans `useMovieSearch`
-- Faire en sorte de retourner un tableau vide lorsque la query est une chaîne vide
+- Use `useReducer` in `useMovieSearch`
+- Make sure to return an empty array when the query is an empty string
 
-### Résultat attendu
+### Expected result
 
-Lorsque le champs de recherche est vide, j'obtiens une liste vide.
+When the search field is empty, I get an empty list.
 
 <iframe
   src="https://codesandbox.io/embed/github/smooth-code/react-hooks-workshop/tree/end-exercise-7/?fontsize=14&view=preview"
@@ -28,9 +28,9 @@ Lorsque le champs de recherche est vide, j'obtiens une liste vide.
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 />
 
-## Aide
+## Help
 
-### Counter avec `useReducer`
+### Counter with `useReducer`
 
 ```js
 import React, { useReducer } from 'react'
