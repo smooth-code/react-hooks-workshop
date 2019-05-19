@@ -79,11 +79,17 @@ Co-fondateur de Smooth Code
 Co-creator of Material-UI.
 
 <div>
-  <a style={{ textDecoration: 'none' }} href="https://github.com/oliviertassinari">
+  <a
+    style={{ textDecoration: 'none' }}
+    href="https://github.com/oliviertassinari"
+  >
     <FontAwesomeIcon icon={faGithub} /> @oliviertassinari
   </a>
   {' | '}
-  <a style={{ textDecoration: 'none' }} href="https://twitter.com/olivtassinari">
+  <a
+    style={{ textDecoration: 'none' }}
+    href="https://twitter.com/olivtassinari"
+  >
     <FontAwesomeIcon icon={faTwitter} /> @olivtassinari
   </a>
 </div>
@@ -505,7 +511,8 @@ Presented by Dan Abramov and Sophie Alpert during the React Conf 2018.
 <dl>
   <dt>React Hook</dt>
   <dd>
-    <em>/ɹiːˈækt/ /hʊk/</em> • A special function that allows to interact with new React features inside a component.
+    <em>/ɹiːˈækt/ /hʊk/</em> • A special function that allows to interact with
+    new React features inside a component.
   </dd>
 </dl>
 
@@ -937,7 +944,9 @@ function App() {
         }
       })
 
-    return () => { expired = true }
+    return () => {
+      expired = true
+    }
   }, [query])
 
   /* ... */
@@ -967,7 +976,9 @@ function App() {
         }
       })
 
-    return () => { expired = true }
+    return () => {
+      expired = true
+    }
   }, [query])
 
   /* ... */
@@ -994,7 +1005,9 @@ function useMovieSearch(query) {
         }
       })
 
-    return () => { expired = true }
+    return () => {
+      expired = true
+    }
   }, [query])
 
   return movies
@@ -1957,7 +1970,7 @@ function Example() {
   useEffect(() => {
     const interval = setInterval(() => console.log(countRef.current), 100)
     return () => clearInterval(interval)
-  }, [countRef])
+  }, [])
   return <button onClick={() => setCount(count => count + 1)}>Increment</button>
 }
 ```

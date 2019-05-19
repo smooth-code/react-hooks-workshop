@@ -46,7 +46,7 @@ export default class Catch extends Component {
     return { hasError: true }
   }
 
-  render () {
+  render() {
     if (this.state.hasError) {
       // Display of the fallback of our choice
       return <h1>Something went wrong.</h1>
@@ -73,7 +73,7 @@ ReactDOM.render(
 ```js
 import { useState, useEffect } from 'react'
 
-function useApi () {
+function useApi() {
   // State containing the result
   const [state, setState] = useState({ result: null, error: null })
 
@@ -83,7 +83,7 @@ function useApi () {
       .then(result => setState({ result, error: null }))
       // In case of error, the catch is called
       .catch(error => setState({ error, result: null }))
-  })
+  }, [])
 
   // If an error has been returned by the query, then I throw
   if (state.error) {

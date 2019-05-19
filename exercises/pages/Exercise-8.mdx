@@ -38,24 +38,21 @@ When the search field is empty, I get an empty list.
 ```js
 function MovieCard({ movie }) {
   return (
-    <Col my={1} xs={12} md={6}>
-      <Card
-        key={movie.id}
-        style={{
-          height: 200,
-          backgroundImage: movie.backdrop_path
-            ? `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
-            : null,
-        }}
-      >
-        <Card.Body>
-          <Card.Title>{movie.title}</Card.Title>
-          <Card.Subtitle>
-            {movie.vote_average} ({movie.vote_count} votes)
-          </Card.Subtitle>
-        </Card.Body>
-      </Card>
-    </Col>
+    <Card
+      style={{
+        height: 200,
+        backgroundImage: movie.backdrop_path
+          ? `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
+          : null,
+      }}
+    >
+      <Card.Body>
+        <Card.Title>{movie.title}</Card.Title>
+        <Card.Subtitle>
+          {movie.vote_average} ({movie.vote_count} votes)
+        </Card.Subtitle>
+      </Card.Body>
+    </Card>
   )
 }
 ```
