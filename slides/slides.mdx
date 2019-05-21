@@ -1815,7 +1815,7 @@ import React from 'react'
 import { useRedux } from './redux'
 
 function RegisterButton() {
-  const { dispatch } = useContext(ReduxContext)
+  const { dispatch } = useRedux()
 
   return (
     <button onClick={() => dispatch({ type: 'register' })}>Register</button>
