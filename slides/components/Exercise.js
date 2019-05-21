@@ -50,9 +50,9 @@ export default function Exercise({ num, title }) {
       <a
         css={styles.link}
         target="_blank"
-        href={`https://code.react-hooks.smooth-code.com/pages-exercise-${num}`}
+        href={`https://code.react-advanced.smooth-code.com/pages-exercise-${num}`}
       >
-        👉 code.react-hooks.smooth-code.com 👈
+        👉 code.react-advanced.smooth-code.com 👈
       </a>
     </div>
   )
