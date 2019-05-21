@@ -38,6 +38,8 @@ import Redux from './images/egghead/Redux.png'
 import ReduxStateADT from './images/egghead/ReduxStateADT.png'
 import SimplifyHooks from './images/egghead/SimplifyHooks.png'
 import TestReactJest from './images/egghead/TestReactJest.png'
+import ReactConcurrent from './images/egghead/ReactConcurrent.png'
+import ReactSuspense from './images/egghead/ReactSuspense.png'
 import funcExplain from './images/func-explain.jpg'
 import contextPic from './images/context.png'
 
@@ -1994,6 +1996,251 @@ ref.current // Access ref value using `ref.current`
 ---
 
 <Exercise num={11} title="Keyboard Shortcuts" />
+
+---
+
+## How to access ref inside an element <br /> while exposing it?
+
+```js
+const FancyInput = React.forwardRef((props, ref) => {
+  const inputRef = React.useRef()
+
+  React.useImperativeHandle(ref, () => inputRef.current)
+
+  return <input ref={inputRef} className="FancyInput" />
+})
+```
+
+- Problem n°1: [repetitive calls](https://codesandbox.io/s/serene-wescoff-cxg1w)
+- Problem n°2: [no update notification](https://codesandbox.io/s/keen-kirch-qkrhs)
+
+---
+
+## useForkRef
+
+```js
+function setRef(ref, value) {
+  if (typeof ref === 'function') {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+}
+
+function useForkRef(refA, refB) {
+  /**
+   * This will create a new function if the ref props change and are defined.
+   * This means react will call the old forkRef with `null` and the new forkRef
+   * with the ref. Cleanup naturally emerges from this behavior
+   */
+  return React.useMemo(() => {
+    if (refA == null && refB == null) {
+      return null;
+    }
+    return refValue => {
+      setRef(refA, refValue);
+      setRef(refB, refValue);
+    };
+  }, [refA, refB]);
+}
+```
+
+[Example](https://codesandbox.io/s/optimistic-brook-4123e)
+
+---
+
+```js
+const FancyInput = React.forwardRef((props, ref) => {
+  const inputRef = React.useRef()
+
+  const handleRef = useForkRef(ref, inputRef);
+
+  return <input ref={handleRef} className="FancyInput" />
+})
+```
+
+---
+
+<Title>
+  <Title.Picture src={ReactConcurrent} />
+  <Title.Text>Concurrent Mode</Title.Text>
+</Title>
+
+---
+
+<iframe
+  style={{ width: '80vw', height: '50vh', overflow: 'hidden' }}
+  src="https://www.youtube.com/embed/ByBPyMBTzM0"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+/>
+
+Last presented by Andrew Clark and Brian Vaughn during the React Conf 2018.
+
+---
+
+## Scheduling
+
+- Previously called "async mode"
+- Allows work scheduling, not blocking, time-slicing
+- Unstable for now
+- React 16.x (~Q2 2019) ?
+
+---
+
+## To opt-in (in the future)
+
+No breaking changes
+
+```jsx
+ReactDOM.render(
+  <React.ConcurrentMode>
+    <App />
+  </React.ConcurrentMode>,
+  document.querySelector('#root')
+);
+```
+
+---
+
+## Require Strict Mode
+
+Wrap your component subtrees in `<React.StrictMode>`
+
+---
+
+## Fix the warnings
+
+- Remove deprecated lifecycles -> hooks
+- [String ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) -> useRef
+- ReactDOM.findDOMNode() -> forwardRef()
+- Legacy context API -> createContext()
+- Support a *render* phase without a *commit* one
+
+---
+
+## Unexpected side effect
+
+```js
+function Slider(props) {
+  const { value } = props
+  const valueRef = React.useRef()
+  valueRef.current = value // Wrong ❌
+
+  const handleKeyDown = React.useCallback(
+    event => {
+      const value = valuesRef.current;
+
+      // 👍 no need for `keyCode?: number`
+      switch (event.key) {
+        case 'Home':
+      // …
+    }, []);
+
+  return <div onKeyDown={handleKeyDown} tabIndex={-1} />
+}
+```
+
+---
+
+## Option n°1
+
+```js
+function Slider(props) {
+  const { value } = props
+  const valueRef = React.useRef()
+
+  React.useEffect(() => {
+    valueRef.current = value // Ok ✅
+  });
+
+  const handleKeyDown = React.useCallback(
+    event => {
+      const value = valuesRef.current;
+
+      switch (event.key) {
+        case 'Home':
+      // …
+    }, []);
+
+  return <div onKeyDown={handleKeyDown} tabIndex={-1} />
+}
+```
+
+---
+
+## useEventCallback
+
+```js
+// Important for SSR
+const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+
+// https://github.com/facebook/react/issues/14099#issuecomment-440013892
+function useEventCallback(fn) {
+  const ref = React.useRef(fn);
+  useEnhancedEffect(() => {
+    ref.current = fn;
+  });
+  return React.useCallback(event => (0, ref.current)(event), []);
+}
+```
+
+---
+
+## Option n°2
+
+```js
+import useEventCallback from './useEventCallback'
+
+function Slider(props) {
+  const { value } = props
+
+  const handleKeyDown = useEventCallback(
+    event => {
+      console.log(value)
+
+      switch (event.key) {
+        case 'Home':
+      // …
+    });
+
+  return <div onKeyDown={handleKeyDown} tabIndex={-1} />
+}
+```
+
+---
+
+## `hidden` prop
+
+- Prerender content in the background
+- An [existing](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden) HTML attribute (close to aria-hidden)
+- First presented in [this issue](https://github.com/oliviertassinari/react-swipeable-views/issues/453#issuecomment-417939459):
+
+```jsx
+function Slideshow(props) {
+  return (
+    <div>
+      <div hidden={props.current !== 0}>
+        <Expensive1 />
+      </div>
+      <div hidden={props.current !== 1}>
+        <Expensive2 />
+      </div>
+      <div hidden={props.current !== 2}>
+        <Expensive3 />
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+<Title>
+  <Title.Picture src={ReactSuspense} />
+  <Title.Text>Suspense for Data Fetching</Title.Text>
+</Title>
 
 ---
 
