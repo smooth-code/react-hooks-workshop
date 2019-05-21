@@ -2045,9 +2045,9 @@ function useForkRef(refA, refB) {
 }
 ```
 
-[Example](https://codesandbox.io/s/optimistic-brook-4123e)
-
 ---
+
+## A solution
 
 ```js
 const FancyInput = React.forwardRef((props, ref) => {
@@ -2058,6 +2058,22 @@ const FancyInput = React.forwardRef((props, ref) => {
   return <input ref={handleRef} className="FancyInput" />
 })
 ```
+
+[Demo](https://codesandbox.io/s/optimistic-brook-4123e)
+
+---
+
+## useLayoutEffect
+
+- The signature is identical to useEffect, <br />but it fires **synchronously** after all DOM mutations.
+- [Different use cases](https://github.com/mui-org/material-ui/search?utf8=%E2%9C%93&q=useLayoutEffect&type=)
+
+---
+
+## useDebugValue
+
+- [Only for custom Hooks](https://codesandbox.io/s/clever-chatterjee-mec9q)
+- I have never used it 🤷‍♂️.
 
 ---
 
@@ -2083,7 +2099,8 @@ Last presented by Andrew Clark and Brian Vaughn during the React Conf 2018.
 ## Scheduling
 
 - Previously called "async mode"
-- Allows work scheduling, not blocking, time-slicing
+- Allows work scheduling
+- Doesn't block the main thread (time-slicing)
 - Unstable for now
 - React 16.x (~Q2 2019) ?
 
@@ -2198,6 +2215,7 @@ function Slider(props) {
 
   const handleKeyDown = useEventCallback(
     event => {
+      // Ok ✅
       console.log(value)
 
       switch (event.key) {
@@ -2231,6 +2249,69 @@ function Slideshow(props) {
         <Expensive3 />
       </div>
     </div>
+  );
+}
+```
+
+---
+
+## How to access a DOM node in a hook?
+
+Let's say I want to output the height of an element.
+
+```js
+// Wrong ❌
+function useHeight() {
+  const ref = useRef();
+  const [height, setHeight] = useState(0);
+
+  useEffect(
+    if (ref.current !== null) {
+      setHeight(ref.current.getBoundingClientRect().height);
+    }
+  }, []);
+
+  return [height, ref]
+}
+
+function MeasureExample() {
+  const [height, ref] = useHeight();
+
+  return (
+    <React.Fragment>
+      <button ref={ref}>Hello, world</button>
+      <p{height}</p>
+    </React.Fragment>
+  );
+}
+```
+
+---
+
+## How to access a DOM node in a hook?
+
+```js
+// OK ✅
+function useHeight() {
+  const [height, setHeight] = useState(0);
+
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
+
+  return [height, ref]
+}
+
+function MeasureExample() {
+  const [height, ref] = useHeight();
+
+  return (
+    <React.Fragment>
+      <button ref={ref}>Hello, world</button>
+      <p{height}</p>
+    </React.Fragment>
   );
 }
 ```
