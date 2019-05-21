@@ -43,7 +43,7 @@ export default function Exercise({ num, title }) {
     <div css={styles.container}>
       <div css={styles.emojis}>👩🏼‍💻👨🏾‍💻</div>
       <h1>
-        Exercice {num}
+        Exercise {num}
         <br />
         {title}
       </h1>
