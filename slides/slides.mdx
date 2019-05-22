@@ -230,7 +230,7 @@ Co-fondateur de Smooth Code
 
 - Server Side Rendering
 - Aussi appelé "Universal Web App"
-- Le HTML est générée côté serveur
+- Le HTML est généré côté serveur
 - Inverse de CSR (Client Side Rendering)
 
 > 👉 Le seul use-case est le SEO
@@ -473,7 +473,7 @@ Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
 
 - Partage de logique entre composants
 - Alternatives aux HOCs et aux render props
-- API plus simple à apréhender
+- API plus simple à appréhender
 
 ---
 
@@ -1015,7 +1015,7 @@ export default class Catch extends Component {
 
 ## À retenir
 
-> 👉 Mettre des boundaries aux endroits stratégique
+> 👉 Mettre des boundaries aux endroits stratégiques
 
 ---
 
@@ -1597,7 +1597,7 @@ import React, { createContext, useContext } from 'react'
 const ThemeContext = createContext('white')
 
 function Button({ children }) {
-  // On récupère la valeur injecté dans le contexte avec `useContext`
+  // On récupère la valeur injectée dans le contexte avec `useContext`
   const theme = useContext(ThemeContext)
   return <button style={{ color: theme }}>{children}</button>
 }
