@@ -33,18 +33,10 @@ Le champs est focus automatiquement au démarrage de l'application.
 ### Forward ref
 
 ```js
-import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import React from 'react'
 
-export default forwardRef(function MyInput(props, ref) {
-  const inputRef = useRef()
-
-  useImperativeHandle(ref, () => ({
-    focus: () => {
-      inputRef.current.focus()
-    },
-  }))
-
-  return <input ref={inputRef} {...props} />
+export default React.forwardRef(function MyInput(props, ref) {
+  return <input ref={ref} {...props} />
 })
 ```
 
@@ -56,7 +48,7 @@ function Example() {
 
   useEffect(() => {
     inputRef.current.focus()
-  }, [inputRef])
+  }, [])
 
   return <input ref={inputRef} />
 ```
