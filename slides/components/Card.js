@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
-function CardBody(props) {
+export function CardBody(props) {
   return (
     <div
       css={css`
@@ -15,7 +15,7 @@ function CardBody(props) {
   )
 }
 
-function CardHeader(props) {
+export function CardHeader(props) {
   return (
     <div
       css={css`
@@ -30,7 +30,7 @@ function CardHeader(props) {
   )
 }
 
-export default function Card(props) {
+export function Card(props) {
   return (
     <div
       css={css`
@@ -46,6 +46,3 @@ export default function Card(props) {
     />
   )
 }
-
-Card.Body = CardBody
-Card.Header = CardHeader

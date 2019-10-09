@@ -50,7 +50,7 @@ export default function Iframe({ src, ...props }) {
           height: '70vh',
           overflow: 'hidden',
         }}
-        frameborder="0"
+        frameBorder="0"
         src={src}
         sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       />

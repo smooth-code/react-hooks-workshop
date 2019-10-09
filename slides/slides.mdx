@@ -459,9 +459,9 @@ const fn = ({ foo }) => foo
 <iframe
   style={{ width: '80vw', height: '50vh', overflow: 'hidden' }}
   src="https://www.youtube.com/embed/dpw9EHDh2bM"
-  frameborder="0"
+  frameBorder="0"
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
+  allowFullScreen
 />
 
 Présenté par Dan Abramov et Sophie Alpert lors de la React Conf 2018.
@@ -1300,13 +1300,13 @@ function Example() {
 
 ---
 
-import Card from './components/Card'
+import { Card, CardHeader, CardBody } from './components/Card'
 
 ## Ce que je veux obtenir
 
 <Card>
-  <Card.Header>Hello!</Card.Header>
-  <Card.Body>I am a Card</Card.Body>
+  <CardHeader>Hello!</CardHeader>
+  <CardBody>I am a Card</CardBody>
 </Card>
 
 ---
@@ -1352,7 +1352,7 @@ function Card({ title, text }) {
 # “Tu peux enlever le titre ?”
 
 <Card>
-  <Card.Body>I am a Card</Card.Body>
+  <CardBody>I am a Card</CardBody>
 </Card>
 
 ---
@@ -1390,8 +1390,8 @@ function Card({ title, text }) {
 # “Le titre sur un fond vert est plus parlant.”
 
 <Card>
-  <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
-  <Card.Body>I am a Card</Card.Body>
+  <CardHeader style={{ backgroundColor: 'green' }}>Hello</CardHeader>
+  <CardBody>I am a Card</CardBody>
 </Card>
 
 ---
@@ -1443,7 +1443,7 @@ function Card({ title, titleBackgroundColor, text }) {
   >
     👻 -50% on all articles, happy halloween!
   </div>
-  <Card.Body>I am a Card</Card.Body>
+  <CardBody>I am a Card</CardBody>
 </Card>
 
 ---
@@ -1488,8 +1488,8 @@ function Card({ title, titleBackgroundColor, ad, text }) {
 
 ```js
 export const Card = styled.div``
-Card.Body = styled.div``
-Card.Header = styled.div``
+export const CardBody = styled.div``
+export const CardHeader = styled.div``
 ```
 
 ---
@@ -1499,40 +1499,40 @@ Card.Header = styled.div``
 ---
 
 <Card>
-  <Card.Header>Hello!</Card.Header>
-  <Card.Body>I am a card</Card.Body>
+  <CardHeader>Hello!</CardHeader>
+  <CardBody>I am a card</CardBody>
 </Card>
 
 ```js
 <Card>
-  <Card.Header>Hello!</Card.Header>
-  <Card.Body>I am a card</Card.Body>
+  <CardHeader>Hello!</CardHeader>
+  <CardBody>I am a card</CardBody>
 </Card>
 ```
 
 ---
 
 <Card>
-  <Card.Body>I am a Card</Card.Body>
+  <CardBody>I am a Card</CardBody>
 </Card>
 
 ```js
 <Card>
-  <Card.Body>I am a card</Card.Body>
+  <CardBody>I am a card</CardBody>
 </Card>
 ```
 
 ---
 
 <Card>
-  <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
-  <Card.Body>I am a Card</Card.Body>
+  <CardHeader style={{ backgroundColor: 'green' }}>Hello</CardHeader>
+  <CardBody>I am a Card</CardBody>
 </Card>
 
 ```js
 <Card>
-  <Card.Header style={{ backgroundColor: 'green' }}>Hello</Card.Header>
-  <Card.Body>I am a Card</Card.Body>
+  <CardHeader style={{ backgroundColor: 'green' }}>Hello</CardHeader>
+  <CardBody>I am a Card</CardBody>
 </Card>
 ```
 
@@ -1549,7 +1549,7 @@ Card.Header = styled.div``
   >
     👻 -50% on all articles, happy halloween!
   </div>
-  <Card.Body>I am a card</Card.Body>
+  <CardBody>I am a card</CardBody>
 </Card>
 
 ```js
@@ -1564,7 +1564,7 @@ Card.Header = styled.div``
   >
     👻 -50% on all articles, happy halloween!
   </div>
-  <Card.Body>I am a card</Card.Body>
+  <CardBody>I am a card</CardBody>
 </Card>
 ```
 
